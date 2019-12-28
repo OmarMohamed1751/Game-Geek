@@ -1,0 +1,53 @@
+//
+//  GameCell.swift
+//  Game Geek
+//
+//  Created by Omar Mohamed on 12/20/19.
+//  Copyright © 2019 Omar Mohamed. All rights reserved.
+//
+
+import UIKit
+import Kingfisher
+
+class GameCell: UITableViewCell {
+    
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var gameImage: UIImageView!
+    @IBOutlet weak var gameName: UILabel!
+    @IBOutlet weak var gameRate: UILabel!
+    @IBOutlet weak var gamePlatforms: UILabel!
+    
+    var platformNameArr = [String]()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+        containerView.layer.cornerRadius = 10
+        gameImage.layer.cornerRadius = 10
+    }
+    
+    func attachGames(game: GameResult) {
+        if let gameImage = game.backgroundImage {
+            self.gameImage.kf.setImage(with: URL(string: gameImage))
+        }
+        
+        if let gameName = game.name {
+            self.gameName.text = gameName
+        }
+        
+        if let gameRate = game.rating {
+            self.gameRate.text = "\(gameRate)"
+        }
+        
+        if let gamePlatform = game.platforms {
+            for game in gamePlatform {
+                if let platformName = game.platform?.name {
+                    self.platformNameArr.append(platformName)
+                    self.gamePlatforms.text = "\(platformNameArr)"
+                }
+            }
+        }
+    }
+    
+}
