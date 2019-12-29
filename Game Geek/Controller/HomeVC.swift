@@ -15,7 +15,6 @@ class HomeVC: UIViewController {
     
     fileprivate let gameCellIdentifier = "GameCell"
     fileprivate let genreCellIdentifier = "GenreCell"
-    
     var genresArr = [Result]()
     var allGamesArr = [GameResult]()
     
@@ -42,7 +41,7 @@ class HomeVC: UIViewController {
             } else {
                 if let genre = genre {
                     if let genreArray = genre.results {
-                        let all = Result(id: 0, name: "All", games: [])
+                        let all = Result(id: 0, name: "All", games: [], isSelected: true)
                         self.genresArr = genreArray
                         self.genresArr.insert(all, at: 0)
                         self.genreCollection.reloadData()
@@ -67,7 +66,47 @@ class HomeVC: UIViewController {
         }
     }
 
+}
 
+// MARK: - Genres Collection
+extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        genresArr.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: genreCellIdentifier, for: indexPath) as? GenreCell else {return UICollectionViewCell()}
+        cell.attachTheGenres(result: genresArr[indexPath.row])
+        
+        //self.genresArr[0].isSelected = true
+        if self.genresArr[indexPath.row].isSelected ?? false {
+            cell.containerView.backgroundColor = #colorLiteral(red: 0, green: 0.7281640172, blue: 0.7614847422, alpha: 1)
+            cell.genre.textColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+        } else {
+            cell.containerView.backgroundColor = #colorLiteral(red: 0.2874289155, green: 0.3110945523, blue: 0.3452425599, alpha: 1)
+            cell.genre.textColor = #colorLiteral(red: 0, green: 0.7281640172, blue: 0.7614847422, alpha: 1)
+        }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        if indexPath.row == 0 {
+            self.setAllGames()
+        } else {
+            print(indexPath.row)
+        }
+        
+        for i in 0..<genresArr.count {
+            genresArr[i].isSelected = false
+        }
+//        self.genresArr[0].isSelected = false
+        genresArr[indexPath.row].isSelected = true
+        collectionView.reloadData()
+        
+    }
 }
 
 // MARK: - Games Table
@@ -89,58 +128,5 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
-    }
-}
-
-// MARK: - Genres Collection
-extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        genresArr.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: genreCellIdentifier, for: indexPath) as? GenreCell else {return UICollectionViewCell()}
-        cell.attachTheGenres(result: genresArr[indexPath.row])
-        
-//        if cell.isSelected {
-//            cell.containerView.backgroundColor = #colorLiteral(red: 0, green: 0.7281640172, blue: 0.7614847422, alpha: 1)
-//            cell.genre.textColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
-//        } else {
-//            cell.containerView.backgroundColor = #colorLiteral(red: 0.2874289155, green: 0.3110945523, blue: 0.3452425599, alpha: 1)
-//            cell.genre.textColor = #colorLiteral(red: 0, green: 0.7281640172, blue: 0.7614847422, alpha: 1)
-//        }
-        
-        if cell.isSelected {
-            self.genresArr[indexPath.row].isSelected = true
-            print("hohohohohohohohoho")
-        }else {
-            self.genresArr[indexPath.row].isSelected = false
-        }
-        
-        
-//        if self.genresArr[indexPath.row].isSelected {
-//            cell.containerView.backgroundColor = #colorLiteral(red: 0, green: 0.7281640172, blue: 0.7614847422, alpha: 1)
-//            cell.genre.textColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
-//        } else {
-//            cell.containerView.backgroundColor = #colorLiteral(red: 0.2874289155, green: 0.3110945523, blue: 0.3452425599, alpha: 1)
-//            cell.genre.textColor = #colorLiteral(red: 0, green: 0.7281640172, blue: 0.7614847422, alpha: 1)
-//        }
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        self.genresArr[indexPath.row].isSelected = true
-//        collectionView.reloadData()
-        
-//        if self.genresArr[indexPath.row].isSelected == true {
-//            print("hohohohohohohohoho")
-//        }
-        
-        if indexPath.row == 0 {
-            self.setAllGames()
-        } else {
-            print(indexPath.row)
-        }
     }
 }
