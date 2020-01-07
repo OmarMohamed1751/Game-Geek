@@ -15,7 +15,7 @@ class GameCell: UITableViewCell {
     @IBOutlet weak var gameImage: UIImageView!
     @IBOutlet weak var gameName: UILabel!
     @IBOutlet weak var gameRate: UILabel!
-    @IBOutlet weak var gamePlatforms: UILabel!
+    @IBOutlet weak var relaseDate: UILabel!
     
     var platformNameArr = [String]()
     
@@ -29,7 +29,7 @@ class GameCell: UITableViewCell {
     
     func attachGames(game: GameResult) {
         if let gameImage = game.backgroundImage {
-            self.gameImage.kf.setImage(with: URL(string: gameImage))
+            self.gameImage.kf.setImage(with: URL(string: gameImage), placeholder: UIImage.init(systemName: "gamecontroller.fill"))
         }
         
         if let gameName = game.name {
@@ -40,14 +40,20 @@ class GameCell: UITableViewCell {
             self.gameRate.text = "\(gameRate)"
         }
         
-        if let gamePlatform = game.platforms {
-            for game in gamePlatform {
-                if let platformName = game.platform?.name {
-                    self.platformNameArr.append(platformName)
-                    self.gamePlatforms.text = "\(platformNameArr)"
-                }
-            }
+        if let relaseDate = game.released {
+            self.relaseDate.text = "\(relaseDate)"
         }
+        
+//        if let gamePlatform = game.platforms {
+//            for game in gamePlatform {
+//                if let platformName = game.platform?.name {
+//                    self.platformNameArr.append(platformName)
+//                    self.gamePlatforms.text = "\(platformNameArr)"
+//                }
+//            }
+//        }
+        
+        
     }
     
 }

@@ -12,11 +12,15 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var genreCollection: UICollectionView!
     @IBOutlet weak var gameListTable: UITableView!
+    @IBOutlet weak var previousBtn: UIButton!
+    @IBOutlet weak var nextBtn: UIButton!
     
     fileprivate let gameCellIdentifier = "GameCell"
     fileprivate let genreCellIdentifier = "GenreCell"
     var genresArr = [Result]()
     var allGamesArr = [GameResult]()
+    var nextPage = 1
+    var previousPage = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +34,21 @@ class HomeVC: UIViewController {
         genreCollection.delegate = self
         genreCollection.dataSource = self
         
+        uiSetup()
         setAllGenres()
         setAllGames()
+        
+    }
+    
+    func uiSetup() {
+        self.previousBtn.isHidden = true
     }
     
     func setAllGenres() {
         API.getAllGenres(controller: self) { (error, genre) in
             if let error = error {
                 print(error)
+                self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let genre = genre {
                     if let genreArray = genre.results {
@@ -52,20 +63,64 @@ class HomeVC: UIViewController {
     }
     
     func setAllGames() {
-        API.getAllGames(controller: self) { (error, game) in
+        API.getAllGames(controller: self, pageCount: nextPage) { (error, game) in
             if let error = error {
                 print(error)
+                self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let game = game {
                     if let allGames = game.results {
                         self.allGamesArr = allGames
+                        self.nextPage += 1
                         self.gameListTable.reloadData()
                     }
                 }
             }
         }
     }
-
+    
+    @IBAction func previousBtn(_ sender: UIButton) {
+        API.getPreviousGames(controller: self, pageCount: previousPage) { (error, game) in
+            if let error = error {
+                print(error)
+                self.showAlert(title: "Opps!", message: error.localizedDescription)
+            } else {
+                if let game = game {
+                    if let allGames = game.results {
+                        self.allGamesArr.removeAll()
+                        self.allGamesArr = allGames
+                        self.nextPage -= 1
+                        self.previousPage -= 1
+                        self.gameListTable.reloadData()
+                    }
+                }
+                if self.previousPage == 0 {
+                    self.previousBtn.isHidden = true
+                }
+            }
+        }
+    }
+    
+    @IBAction func nextBtn(_ sender: UIButton) {
+        API.getNextGames(controller: self, pageCount: nextPage) { (error, game) in
+            if let error = error {
+                print(error)
+                self.showAlert(title: "Opps!", message: error.localizedDescription)
+            } else {
+                if let game = game {
+                    if let allGames = game.results {
+                        self.allGamesArr.removeAll()
+                        self.allGamesArr = allGames
+                        self.nextPage += 1
+                        self.previousPage += 1
+                        self.gameListTable.reloadData()
+                        self.previousBtn.isHidden = false
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 // MARK: - Genres Collection
@@ -78,7 +133,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: genreCellIdentifier, for: indexPath) as? GenreCell else {return UICollectionViewCell()}
         cell.attachTheGenres(result: genresArr[indexPath.row])
         
-        //self.genresArr[0].isSelected = true
         if self.genresArr[indexPath.row].isSelected ?? false {
             cell.containerView.backgroundColor = #colorLiteral(red: 0, green: 0.7281640172, blue: 0.7614847422, alpha: 1)
             cell.genre.textColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
@@ -91,8 +145,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
         if indexPath.row == 0 {
             self.setAllGames()
         } else {
@@ -102,7 +154,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         for i in 0..<genresArr.count {
             genresArr[i].isSelected = false
         }
-//        self.genresArr[0].isSelected = false
         genresArr[indexPath.row].isSelected = true
         collectionView.reloadData()
         

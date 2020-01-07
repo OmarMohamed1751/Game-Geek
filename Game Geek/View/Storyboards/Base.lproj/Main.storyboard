@@ -36,21 +36,48 @@
                                 <cells/>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MnA-he-imK">
-                                <rect key="frame" x="17" y="174" width="380" height="688"/>
+                                <rect key="frame" x="17" y="169" width="380" height="633"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="IPu-mt-MMn">
+                                <rect key="frame" x="107" y="807" width="200" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOw-R1-bC8">
+                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="50"/>
+                                        <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="arrowshape.turn.up.left.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="previousBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vKk-XH-NNp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ird-pV-lhh">
+                                        <rect key="frame" x="112.5" y="0.0" width="87.5" height="50"/>
+                                        <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="arrowshape.turn.up.right.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="nextBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sE3-jF-7eW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="7lM-mU-wrs"/>
+                                    <constraint firstAttribute="height" constant="50" id="eE9-b8-Shf"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.13333333333333333" green="0.15686274509803921" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="i1C-sV-iAU" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="35:896" id="3TB-cX-t5C"/>
+                            <constraint firstItem="IPu-mt-MMn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="419-hJ-XVM"/>
                             <constraint firstItem="h3H-Z9-5Mg" firstAttribute="top" secondItem="i1C-sV-iAU" secondAttribute="bottom" constant="20" id="5eX-kJ-I9u"/>
                             <constraint firstItem="MnA-he-imK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="380:414" id="GtV-Qw-oEL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IPu-mt-MMn" secondAttribute="bottom" constant="5" id="IJS-C9-E3N"/>
                             <constraint firstItem="i1C-sV-iAU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Ihw-ao-HCK"/>
+                            <constraint firstItem="IPu-mt-MMn" firstAttribute="top" secondItem="MnA-he-imK" secondAttribute="bottom" constant="5" id="IyQ-hb-iRI"/>
                             <constraint firstItem="MnA-he-imK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="QLp-Pn-sDk"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MnA-he-imK" secondAttribute="bottom" id="aJc-KW-pvp"/>
                             <constraint firstItem="i1C-sV-iAU" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="300:414" id="br2-iP-FYC"/>
                             <constraint firstItem="h3H-Z9-5Mg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="350:414" id="g9F-oD-ZSL"/>
-                            <constraint firstItem="MnA-he-imK" firstAttribute="top" secondItem="h3H-Z9-5Mg" secondAttribute="bottom" constant="15" id="gsP-7m-Y4r"/>
+                            <constraint firstItem="MnA-he-imK" firstAttribute="top" secondItem="h3H-Z9-5Mg" secondAttribute="bottom" constant="10" id="gsP-7m-Y4r"/>
                             <constraint firstItem="i1C-sV-iAU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="iu6-b9-vPC"/>
                             <constraint firstItem="h3H-Z9-5Mg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lvI-Sq-nvy"/>
                         </constraints>
@@ -59,6 +86,8 @@
                     <connections>
                         <outlet property="gameListTable" destination="MnA-he-imK" id="BbB-QB-lws"/>
                         <outlet property="genreCollection" destination="h3H-Z9-5Mg" id="Zbl-th-8Pu"/>
+                        <outlet property="nextBtn" destination="ird-pV-lhh" id="7kn-8l-lFl"/>
+                        <outlet property="previousBtn" destination="sOw-R1-bC8" id="mMV-6b-FXi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -66,4 +95,8 @@
             <point key="canvasLocation" x="131.8840579710145" y="132.58928571428572"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
+        <image name="arrowshape.turn.up.right.fill" catalog="system" width="64" height="52"/>
+    </resources>
 </document>

@@ -9,7 +9,8 @@
 import Foundation
 
 struct URLs {
-    static let main = "https://rawg-video-games-database.p.rapidapi.com/"
-    static let allGames = main + "games"
+    
+    static let main = "https://api.rawg.io/api/"
     static let allGenres = main + "genres"
+    static let allGames = main + "games?page="
 }
