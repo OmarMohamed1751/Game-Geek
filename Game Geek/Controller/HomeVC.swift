@@ -63,6 +63,7 @@ class HomeVC: UIViewController {
     }
     
     func setAllGames() {
+        self.nextPage = 1
         API.getAllGames(controller: self, pageCount: nextPage) { (error, game) in
             if let error = error {
                 print(error)
@@ -71,7 +72,6 @@ class HomeVC: UIViewController {
                 if let game = game {
                     if let allGames = game.results {
                         self.allGamesArr = allGames
-                        self.nextPage += 1
                         self.gameListTable.reloadData()
                     }
                 }
@@ -102,6 +102,7 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func nextBtn(_ sender: UIButton) {
+        self.nextPage += 1
         API.getNextGames(controller: self, pageCount: nextPage) { (error, game) in
             if let error = error {
                 print(error)
@@ -111,7 +112,6 @@ class HomeVC: UIViewController {
                     if let allGames = game.results {
                         self.allGamesArr.removeAll()
                         self.allGamesArr = allGames
-                        self.nextPage += 1
                         self.previousPage += 1
                         self.gameListTable.reloadData()
                         self.previousBtn.isHidden = false
@@ -175,9 +175,5 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
     }
 }
