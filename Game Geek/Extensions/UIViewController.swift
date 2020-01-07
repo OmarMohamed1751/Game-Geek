@@ -22,6 +22,6 @@ extension UIViewController {
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Loading"
         hud.show(in: self.view)
-        hud.dismiss(afterDelay: 1.5)
+        hud.dismiss(afterDelay: 1.0)
     }
 }

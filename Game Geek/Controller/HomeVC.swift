@@ -14,6 +14,8 @@ class HomeVC: UIViewController {
     @IBOutlet weak var gameListTable: UITableView!
     @IBOutlet weak var previousBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var pageCountView: UIView!
+    @IBOutlet weak var pageCountLabel: UILabel!
     
     fileprivate let gameCellIdentifier = "GameCell"
     fileprivate let genreCellIdentifier = "GenreCell"
@@ -44,6 +46,7 @@ class HomeVC: UIViewController {
         setAllGenres()
         setAllGames()
         self.previousBtn.isHidden = true
+        self.pageCountView.layer.cornerRadius = pageCountView.bounds.height / 2
     }
     
     func setAllGenres() {
@@ -69,6 +72,7 @@ class HomeVC: UIViewController {
         showHud()
         self.nextPage = 1
         self.previousPage = 0
+        self.pageCountLabel.text = "\(nextPage)"
         API.getAllGames(controller: self, pageCount: nextPage) { (error, game) in
             if let error = error {
                 print(error)
@@ -89,6 +93,7 @@ class HomeVC: UIViewController {
     
     @IBAction func previousBtn(_ sender: UIButton) {
         showHud()
+        self.pageCountLabel.text = "\(nextPage - 1)"
         API.getPreviousGames(controller: self, pageCount: previousPage) { (error, game) in
             if let error = error {
                 print(error)
@@ -103,6 +108,13 @@ class HomeVC: UIViewController {
                         self.gameListTable.reloadData()
                     }
                 }
+                
+                for i in 0 ..< self.genresArr.count {
+                    self.genresArr[i].isSelected = false
+                }
+                self.genresArr[0].isSelected = true
+                self.genreCollection.reloadData()
+                
                 if self.previousPage == 0 {
                     self.previousBtn.isHidden = true
                 }
@@ -113,6 +125,7 @@ class HomeVC: UIViewController {
     @IBAction func nextBtn(_ sender: UIButton) {
         showHud()
         self.nextPage += 1
+        self.pageCountLabel.text = "\(nextPage)"
         API.getNextGames(controller: self, pageCount: nextPage) { (error, game) in
             if let error = error {
                 print(error)
@@ -127,14 +140,15 @@ class HomeVC: UIViewController {
                         self.previousBtn.isHidden = false
                     }
                 }
+                
+                for i in 0 ..< self.genresArr.count {
+                    self.genresArr[i].isSelected = false
+                }
+                self.genresArr[0].isSelected = true
+                self.genreCollection.reloadData()
             }
         }
     }
-    
-    func selectGenre(genre at: IndexPath) {
-        self.genresArr.removeAll()
-    }
-    
 }
 
 // MARK: - Genres Collection
@@ -162,8 +176,49 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if indexPath.row == 0 {
             self.setAllGames()
         } else {
-            print(indexPath.row)
-            print(genresArr[indexPath.row])
+//            print(indexPath.row)
+//            print(genresArr[indexPath.row])
+//            print(genresArr[indexPath.row].games)
+            showHud()
+            API.getAllGames(controller: self, pageCount: nextPage) { (error, games) in
+                if let error = error {
+                    print(error)
+                    self.showAlert(title: "Opps!", message: error.localizedDescription)
+                } else {
+                    self.allGamesArr.removeAll()
+                    if let game = games {
+                        if let allGames = game.results {
+                            
+                            for game in allGames {
+                                if let genres = game.genres {
+                                    for genre in genres {
+                                        if genre.id == indexPath.row + 1 {
+                                            self.allGamesArr.append(game)
+                                            print(genre.id)
+                                        }
+                                    }
+                                }
+                                self.gameListTable.reloadData()
+                            }
+                            
+//                            for game in allGames {
+//                                if let genres = game.genres {
+//                                    let filteredGenres = genres.filter { $0.id == indexPath.row }
+//                                    for genre in filteredGenres {
+//                                        if genre.id == indexPath.row {
+//                                            self.allGamesArr.append(game)
+//                                            self.gameListTable.reloadData()
+//                                        }
+//                                    }
+//
+//                                }
+//                            }
+                            
+                            
+                        }
+                    }
+                }
+            }
         }
         
         for i in 0..<genresArr.count {
@@ -171,7 +226,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         }
         genresArr[indexPath.row].isSelected = true
         collectionView.reloadData()
-        
     }
 }
 

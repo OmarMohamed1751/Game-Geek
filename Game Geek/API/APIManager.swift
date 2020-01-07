@@ -39,8 +39,8 @@ class API {
     }
     
     // MARK: - Game request
-    static func getAllGames(controller: UIViewController, pageCount: Int, completion: @escaping(_ error: Error?, _ games: Game?)-> Void) {
-        let url = URLs.allGames + "\(pageCount)"
+    static func getAllGames(controller: UIViewController, pageCount: Int?, completion: @escaping(_ error: Error?, _ games: Game?)-> Void) {
+        let url = URLs.allGames + "\(pageCount ?? 1)"
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             switch response.result {
             case .failure:

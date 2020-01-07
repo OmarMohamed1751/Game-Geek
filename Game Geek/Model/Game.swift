@@ -21,9 +21,10 @@ struct GameResult: Codable {
     let backgroundImage: String?
     let rating: Double?
     let platforms: [PlatformElement]?
+    let genres: [GameGenre]?
     
     enum CodingKeys: String, CodingKey{
-        case id, slug, name, released, rating, platforms
+        case id, slug, name, released, rating, platforms, genres
         case backgroundImage = "background_image"
     }
 }
@@ -36,4 +37,16 @@ struct PlatformElement: Codable {
 // MARK: - Platform
 struct Platform: Codable {
     let name: String?
+}
+
+// MARK: - Genre
+struct GameGenre: Codable {
+    let id: Int
+    let name, slug: String
+    let gamesCount: Int
+
+    enum CodingKeys: String, CodingKey {
+        case id, name, slug
+        case gamesCount = "games_count"
+    }
 }
