@@ -34,17 +34,20 @@ class HomeVC: UIViewController {
         genreCollection.delegate = self
         genreCollection.dataSource = self
         
-        uiSetup()
-        setAllGenres()
-        setAllGames()
+        basicUISetup()
+        
         
     }
     
-    func uiSetup() {
+    func basicUISetup() {
+        showHud()
+        setAllGenres()
+        setAllGames()
         self.previousBtn.isHidden = true
     }
     
     func setAllGenres() {
+        showHud()
         API.getAllGenres(controller: self) { (error, genre) in
             if let error = error {
                 print(error)
@@ -63,7 +66,9 @@ class HomeVC: UIViewController {
     }
     
     func setAllGames() {
+        showHud()
         self.nextPage = 1
+        self.previousPage = 0
         API.getAllGames(controller: self, pageCount: nextPage) { (error, game) in
             if let error = error {
                 print(error)
@@ -76,10 +81,14 @@ class HomeVC: UIViewController {
                     }
                 }
             }
+            if self.previousPage == 0 {
+                self.previousBtn.isHidden = true
+            }
         }
     }
     
     @IBAction func previousBtn(_ sender: UIButton) {
+        showHud()
         API.getPreviousGames(controller: self, pageCount: previousPage) { (error, game) in
             if let error = error {
                 print(error)
@@ -102,6 +111,7 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func nextBtn(_ sender: UIButton) {
+        showHud()
         self.nextPage += 1
         API.getNextGames(controller: self, pageCount: nextPage) { (error, game) in
             if let error = error {
@@ -119,6 +129,10 @@ class HomeVC: UIViewController {
                 }
             }
         }
+    }
+    
+    func selectGenre(genre at: IndexPath) {
+        self.genresArr.removeAll()
     }
     
 }
@@ -149,6 +163,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             self.setAllGames()
         } else {
             print(indexPath.row)
+            print(genresArr[indexPath.row])
         }
         
         for i in 0..<genresArr.count {

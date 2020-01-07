@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.9.1)
   - IQKeyboardManagerSwift (6.5.4)
+  - JGProgressHUD (2.1)
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
@@ -8,19 +9,22 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - IQKeyboardManagerSwift
+  - JGProgressHUD
   - Kingfisher (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - IQKeyboardManagerSwift
+    - JGProgressHUD
     - Kingfisher
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
+  JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
 
-PODFILE CHECKSUM: 0d3c65dd3cd6774335a751c032bf4afba644cc68
+PODFILE CHECKSUM: a56648dbdfb9f43886f8ac2d929cf53e57c77c81
 
 COCOAPODS: 1.8.4

@@ -9,4 +9,5 @@ target 'Game Geek' do
 pod 'IQKeyboardManagerSwift'
 pod 'Alamofire'
 pod 'Kingfisher', '~> 5.0'
+pod 'JGProgressHUD'
 end
