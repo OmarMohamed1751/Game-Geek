@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		074F5D3D23C610160044DAEA /* GameDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074F5D3C23C610160044DAEA /* GameDetailsVC.swift */; };
+		074F5D3D23C610160044DAEA /* GameDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074F5D3C23C610160044DAEA /* GameDetailVC.swift */; };
 		07BBB0AE23AD1060001949BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BBB0AD23AD1060001949BE /* AppDelegate.swift */; };
 		07BBB0B023AD1060001949BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BBB0AF23AD1060001949BE /* SceneDelegate.swift */; };
 		07BBB0B223AD1060001949BE /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BBB0B123AD1060001949BE /* HomeVC.swift */; };
@@ -23,11 +23,13 @@
 		07BBB0DA23AD5252001949BE /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BBB0D823AD5252001949BE /* GenreCell.swift */; };
 		07BBB0DB23AD5252001949BE /* GenreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07BBB0D923AD5252001949BE /* GenreCell.xib */; };
 		07BBB0DD23AD57A0001949BE /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BBB0DC23AD57A0001949BE /* Genre.swift */; };
+		07D1ABBB23C6679E004C85E9 /* PlatformCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D1ABB923C6679E004C85E9 /* PlatformCell.swift */; };
+		07D1ABBC23C6679E004C85E9 /* PlatformCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07D1ABBA23C6679E004C85E9 /* PlatformCell.xib */; };
 		CA9E16D7CEFB9822A58C52AA /* Pods_Game_Geek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE335F4206E428DF5C86BBE /* Pods_Game_Geek.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		074F5D3C23C610160044DAEA /* GameDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsVC.swift; sourceTree = "<group>"; };
+		074F5D3C23C610160044DAEA /* GameDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailVC.swift; sourceTree = "<group>"; };
 		07BBB0AA23AD1060001949BE /* Game Geek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Geek.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07BBB0AD23AD1060001949BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07BBB0AF23AD1060001949BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		07BBB0D823AD5252001949BE /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		07BBB0D923AD5252001949BE /* GenreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreCell.xib; sourceTree = "<group>"; };
 		07BBB0DC23AD57A0001949BE /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		07D1ABB923C6679E004C85E9 /* PlatformCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformCell.swift; sourceTree = "<group>"; };
+		07D1ABBA23C6679E004C85E9 /* PlatformCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlatformCell.xib; sourceTree = "<group>"; };
 		1178A65511A0A9E2AD1054A7 /* Pods-Game Geek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Geek.release.xcconfig"; path = "Target Support Files/Pods-Game Geek/Pods-Game Geek.release.xcconfig"; sourceTree = "<group>"; };
 		186A4CFBA1C5C7637E000CB9 /* Pods-Game Geek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Geek.debug.xcconfig"; path = "Target Support Files/Pods-Game Geek/Pods-Game Geek.debug.xcconfig"; sourceTree = "<group>"; };
 		9DE335F4206E428DF5C86BBE /* Pods_Game_Geek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Game_Geek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				07BBB0B123AD1060001949BE /* HomeVC.swift */,
-				074F5D3C23C610160044DAEA /* GameDetailsVC.swift */,
+				074F5D3C23C610160044DAEA /* GameDetailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -120,6 +124,7 @@
 				0763DC3923AE669B00459345 /* Storyboards */,
 				07BBB0C723AD161A001949BE /* Genres Collection Cell */,
 				07BBB0C623AD1616001949BE /* Games Table Cell */,
+				07D1ABB823C66740004C85E9 /* Platfom Collection Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -166,6 +171,15 @@
 				07BBB0D923AD5252001949BE /* GenreCell.xib */,
 			);
 			path = "Genres Collection Cell";
+			sourceTree = "<group>";
+		};
+		07D1ABB823C66740004C85E9 /* Platfom Collection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				07D1ABB923C6679E004C85E9 /* PlatformCell.swift */,
+				07D1ABBA23C6679E004C85E9 /* PlatformCell.xib */,
+			);
+			path = "Platfom Collection Cell";
 			sourceTree = "<group>";
 		};
 		1E40A73A70457F3AFFD308AB /* Pods */ = {
@@ -245,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D1ABBC23C6679E004C85E9 /* PlatformCell.xib in Resources */,
 				07BBB0BA23AD1063001949BE /* LaunchScreen.storyboard in Resources */,
 				07BBB0B723AD1063001949BE /* Assets.xcassets in Resources */,
 				07BBB0B523AD1060001949BE /* Main.storyboard in Resources */,
@@ -302,8 +317,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				074F5D3D23C610160044DAEA /* GameDetailsVC.swift in Sources */,
+				074F5D3D23C610160044DAEA /* GameDetailVC.swift in Sources */,
 				07BBB0D323AD315F001949BE /* APIManager.swift in Sources */,
+				07D1ABBB23C6679E004C85E9 /* PlatformCell.swift in Sources */,
 				07BBB0B223AD1060001949BE /* HomeVC.swift in Sources */,
 				07BBB0CD23AD1FA2001949BE /* Game.swift in Sources */,
 				07BBB0CF23AD2019001949BE /* UIViewController.swift in Sources */,

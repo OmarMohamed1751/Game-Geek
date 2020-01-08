@@ -101,7 +101,7 @@ class HomeVC: UIViewController {
         hud.dismiss(afterDelay: 0.5)
     }
     
-    // MARK: - Back and Nest buttons
+    // MARK: - Back and Next buttons
     @IBAction func previousBtn(_ sender: UIButton) {
         hud.show(in: self.view)
         self.pageCountLabel.text = "\(currentPage - 1)"
@@ -254,17 +254,25 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-        guard let gameDetailsVC = storyboard?.instantiateViewController(withIdentifier: "GameDetailsVC") as? GameDetailsVC else { return }
         
-//        guard let gameImage = allGamesArr[indexPath.row].backgroundImage else { return }
-//        print(gameImage)
-//
-//        gameDetailsVC.gameBackground.kf.setImage(with: URL(string: gameImage), placeholder: UIImage(systemName: "gamecontroller.fill"))
+        guard let gameDetailVC = storyboard?.instantiateViewController(withIdentifier: "GameDetailVC") as? GameDetailVC else { return }
+
+        guard let gameImage = allGamesArr[indexPath.row].backgroundImage else { return }
+        guard let gameName = allGamesArr[indexPath.row].name else { return }
+        if let gamePlatform = allGamesArr[indexPath.row].platforms {
+            for platform in gamePlatform {
+                if let platformName = platform.platform?.name {
+                    gameDetailVC.platformNameArr.append(platformName)
+                    print(gameDetailVC.platformNameArr)
+                }
+            }
+        }
         
+        gameDetailVC.gameImageString = gameImage
+        gameDetailVC.gameNameString = gameName
         
+        navigationController?.pushViewController(gameDetailVC, animated: true)
         
-        navigationController?.pushViewController(gameDetailsVC, animated: true)
         
     }
 }

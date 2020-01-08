@@ -17,8 +17,6 @@ class GameCell: UITableViewCell {
     @IBOutlet weak var gameRate: UILabel!
     @IBOutlet weak var relaseDate: UILabel!
     
-    var platformNameArr = [String]()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -43,17 +41,6 @@ class GameCell: UITableViewCell {
         if let relaseDate = game.released {
             self.relaseDate.text = "\(relaseDate)"
         }
-        
-//        if let gamePlatform = game.platforms {
-//            for game in gamePlatform {
-//                if let platformName = game.platform?.name {
-//                    self.platformNameArr.append(platformName)
-//                    self.gamePlatforms.text = "\(platformNameArr)"
-//                }
-//            }
-//        }
-        
-        
     }
     
 }
