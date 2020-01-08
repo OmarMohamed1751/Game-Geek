@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class HomeVC: UIViewController {
     
@@ -19,9 +20,10 @@ class HomeVC: UIViewController {
     
     fileprivate let gameCellIdentifier = "GameCell"
     fileprivate let genreCellIdentifier = "GenreCell"
+    let hud = JGProgressHUD(style: .dark)
     var genresArr = [Result]()
     var allGamesArr = [GameResult]()
-    var nextPage = 1
+    var currentPage = 1
     var previousPage = 0
     
     override func viewDidLoad() {
@@ -42,15 +44,17 @@ class HomeVC: UIViewController {
     }
     
     func basicUISetup() {
-        showHud()
+        hud.textLabel.text = "Loading"
+        hud.show(in: self.view)
         setAllGenres()
         setAllGames()
         self.previousBtn.isHidden = true
         self.pageCountView.layer.cornerRadius = pageCountView.bounds.height / 2
+        hud.dismiss(afterDelay: 1.0)
     }
     
     func setAllGenres() {
-        showHud()
+        hud.show(in: self.view)
         API.getAllGenres(controller: self) { (error, genre) in
             if let error = error {
                 print(error)
@@ -66,14 +70,15 @@ class HomeVC: UIViewController {
                 }
             }
         }
+        hud.dismiss(afterDelay: 1.0)
     }
     
     func setAllGames() {
-        showHud()
-        self.nextPage = 1
+        hud.show(in: self.view)
+        self.currentPage = 1
         self.previousPage = 0
-        self.pageCountLabel.text = "\(nextPage)"
-        API.getAllGames(controller: self, pageCount: nextPage) { (error, game) in
+        self.pageCountLabel.text = "\(currentPage)"
+        API.getAllGames(controller: self, pageCount: currentPage) { (error, game) in
             if let error = error {
                 print(error)
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
@@ -89,11 +94,12 @@ class HomeVC: UIViewController {
                 self.previousBtn.isHidden = true
             }
         }
+        hud.dismiss(afterDelay: 1.0)
     }
     
     @IBAction func previousBtn(_ sender: UIButton) {
-        showHud()
-        self.pageCountLabel.text = "\(nextPage - 1)"
+        hud.show(in: self.view)
+        self.pageCountLabel.text = "\(currentPage - 1)"
         API.getPreviousGames(controller: self, pageCount: previousPage) { (error, game) in
             if let error = error {
                 print(error)
@@ -103,7 +109,7 @@ class HomeVC: UIViewController {
                     if let allGames = game.results {
                         self.allGamesArr.removeAll()
                         self.allGamesArr = allGames
-                        self.nextPage -= 1
+                        self.currentPage -= 1
                         self.previousPage -= 1
                         self.gameListTable.reloadData()
                     }
@@ -120,13 +126,14 @@ class HomeVC: UIViewController {
                 }
             }
         }
+        hud.dismiss(afterDelay: 1.0)
     }
     
     @IBAction func nextBtn(_ sender: UIButton) {
-        showHud()
-        self.nextPage += 1
-        self.pageCountLabel.text = "\(nextPage)"
-        API.getNextGames(controller: self, pageCount: nextPage) { (error, game) in
+        hud.show(in: self.view)
+        self.currentPage += 1
+        self.pageCountLabel.text = "\(currentPage)"
+        API.getNextGames(controller: self, pageCount: currentPage) { (error, game) in
             if let error = error {
                 print(error)
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
@@ -148,7 +155,9 @@ class HomeVC: UIViewController {
                 self.genreCollection.reloadData()
             }
         }
+        hud.dismiss(afterDelay: 1.0)
     }
+    
 }
 
 // MARK: - Genres Collection
@@ -179,8 +188,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 //            print(indexPath.row)
 //            print(genresArr[indexPath.row])
 //            print(genresArr[indexPath.row].games)
-            showHud()
-            API.getAllGames(controller: self, pageCount: nextPage) { (error, games) in
+            hud.show(in: self.view)
+            API.getAllGames(controller: self, pageCount: currentPage) { (error, games) in
                 if let error = error {
                     print(error)
                     self.showAlert(title: "Opps!", message: error.localizedDescription)
@@ -192,33 +201,37 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                             for game in allGames {
                                 if let genres = game.genres {
                                     for genre in genres {
-                                        if genre.id == indexPath.row + 1 {
+                                        let genreId = genre.id
+                                        if self.genresArr[indexPath.row].id == genreId {
                                             self.allGamesArr.append(game)
-                                            print(genre.id)
                                         }
                                     }
                                 }
                                 self.gameListTable.reloadData()
                             }
                             
+                            if self.allGamesArr.isEmpty {
+                                self.showAlert(title: "Nothing to show here", message: nil)
+                            }
+                            
 //                            for game in allGames {
 //                                if let genres = game.genres {
 //                                    let filteredGenres = genres.filter { $0.id == indexPath.row }
 //                                    for genre in filteredGenres {
+//                                        print(genre.name)
 //                                        if genre.id == indexPath.row {
 //                                            self.allGamesArr.append(game)
 //                                            self.gameListTable.reloadData()
 //                                        }
 //                                    }
-//
 //                                }
 //                            }
-                            
-                            
                         }
+                        
                     }
                 }
             }
+            hud.dismiss(afterDelay: 1.0)
         }
         
         for i in 0..<genresArr.count {
