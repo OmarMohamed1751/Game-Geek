@@ -11,6 +11,7 @@ import JGProgressHUD
 
 class HomeVC: UIViewController {
     
+    // MARK: - Outlets
     @IBOutlet weak var genreCollection: UICollectionView!
     @IBOutlet weak var gameListTable: UITableView!
     @IBOutlet weak var previousBtn: UIButton!
@@ -18,6 +19,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var pageCountView: UIView!
     @IBOutlet weak var pageCountLabel: UILabel!
     
+    // MARK: - Vars and Lets
     fileprivate let gameCellIdentifier = "GameCell"
     fileprivate let genreCellIdentifier = "GenreCell"
     let hud = JGProgressHUD(style: .dark)
@@ -40,9 +42,9 @@ class HomeVC: UIViewController {
         
         basicUISetup()
         
-        
     }
     
+    // MARK: - UI Setup
     func basicUISetup() {
         hud.textLabel.text = "Loading"
         hud.show(in: self.view)
@@ -50,14 +52,16 @@ class HomeVC: UIViewController {
         setAllGames()
         self.previousBtn.isHidden = true
         self.pageCountView.layer.cornerRadius = pageCountView.bounds.height / 2
-        hud.dismiss(afterDelay: 1.0)
+        hud.dismiss(afterDelay: 0.5)
     }
     
+    // MARK: - Calling all genres function
     func setAllGenres() {
         hud.show(in: self.view)
         API.getAllGenres(controller: self) { (error, genre) in
             if let error = error {
                 print(error)
+                self.hud.dismiss(afterDelay: 0.5)
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let genre = genre {
@@ -70,17 +74,17 @@ class HomeVC: UIViewController {
                 }
             }
         }
-        hud.dismiss(afterDelay: 1.0)
+        hud.dismiss(afterDelay: 0.5)
     }
     
+    // MARK: - Calling all games function
     func setAllGames() {
         hud.show(in: self.view)
-        self.currentPage = 1
-        self.previousPage = 0
         self.pageCountLabel.text = "\(currentPage)"
         API.getAllGames(controller: self, pageCount: currentPage) { (error, game) in
             if let error = error {
                 print(error)
+                self.hud.dismiss(afterDelay: 0.5)
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let game = game {
@@ -94,15 +98,17 @@ class HomeVC: UIViewController {
                 self.previousBtn.isHidden = true
             }
         }
-        hud.dismiss(afterDelay: 1.0)
+        hud.dismiss(afterDelay: 0.5)
     }
     
+    // MARK: - Back and Nest buttons
     @IBAction func previousBtn(_ sender: UIButton) {
         hud.show(in: self.view)
         self.pageCountLabel.text = "\(currentPage - 1)"
         API.getPreviousGames(controller: self, pageCount: previousPage) { (error, game) in
             if let error = error {
                 print(error)
+                self.hud.dismiss(afterDelay: 0.5)
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let game = game {
@@ -126,7 +132,7 @@ class HomeVC: UIViewController {
                 }
             }
         }
-        hud.dismiss(afterDelay: 1.0)
+        hud.dismiss(afterDelay: 0.5)
     }
     
     @IBAction func nextBtn(_ sender: UIButton) {
@@ -136,6 +142,7 @@ class HomeVC: UIViewController {
         API.getNextGames(controller: self, pageCount: currentPage) { (error, game) in
             if let error = error {
                 print(error)
+                self.hud.dismiss(afterDelay: 0.5)
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let game = game {
@@ -155,7 +162,7 @@ class HomeVC: UIViewController {
                 self.genreCollection.reloadData()
             }
         }
-        hud.dismiss(afterDelay: 1.0)
+        hud.dismiss(afterDelay: 0.5)
     }
     
 }
@@ -187,11 +194,12 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         } else {
 //            print(indexPath.row)
 //            print(genresArr[indexPath.row])
-//            print(genresArr[indexPath.row].games)
+            print(genresArr[indexPath.row].games ?? [])
             hud.show(in: self.view)
             API.getAllGames(controller: self, pageCount: currentPage) { (error, games) in
                 if let error = error {
                     print(error)
+                    self.hud.dismiss(afterDelay: 0.5)
                     self.showAlert(title: "Opps!", message: error.localizedDescription)
                 } else {
                     self.allGamesArr.removeAll()
@@ -213,25 +221,11 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                             if self.allGamesArr.isEmpty {
                                 self.showAlert(title: "Nothing to show here", message: nil)
                             }
-                            
-//                            for game in allGames {
-//                                if let genres = game.genres {
-//                                    let filteredGenres = genres.filter { $0.id == indexPath.row }
-//                                    for genre in filteredGenres {
-//                                        print(genre.name)
-//                                        if genre.id == indexPath.row {
-//                                            self.allGamesArr.append(game)
-//                                            self.gameListTable.reloadData()
-//                                        }
-//                                    }
-//                                }
-//                            }
                         }
-                        
                     }
                 }
             }
-            hud.dismiss(afterDelay: 1.0)
+            hud.dismiss(afterDelay: 0.5)
         }
         
         for i in 0..<genresArr.count {
@@ -257,5 +251,20 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        guard let gameDetailsVC = storyboard?.instantiateViewController(withIdentifier: "GameDetailsVC") as? GameDetailsVC else { return }
+        
+//        guard let gameImage = allGamesArr[indexPath.row].backgroundImage else { return }
+//        print(gameImage)
+//
+//        gameDetailsVC.gameBackground.kf.setImage(with: URL(string: gameImage), placeholder: UIImage(systemName: "gamecontroller.fill"))
+        
+        
+        
+        navigationController?.pushViewController(gameDetailsVC, animated: true)
+        
     }
 }

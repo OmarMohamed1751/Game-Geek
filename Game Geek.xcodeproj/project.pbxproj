@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		074F5D3D23C610160044DAEA /* GameDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074F5D3C23C610160044DAEA /* GameDetailsVC.swift */; };
 		07BBB0AE23AD1060001949BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BBB0AD23AD1060001949BE /* AppDelegate.swift */; };
 		07BBB0B023AD1060001949BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BBB0AF23AD1060001949BE /* SceneDelegate.swift */; };
 		07BBB0B223AD1060001949BE /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BBB0B123AD1060001949BE /* HomeVC.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		074F5D3C23C610160044DAEA /* GameDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsVC.swift; sourceTree = "<group>"; };
 		07BBB0AA23AD1060001949BE /* Game Geek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Geek.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07BBB0AD23AD1060001949BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07BBB0AF23AD1060001949BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				07BBB0B123AD1060001949BE /* HomeVC.swift */,
+				074F5D3C23C610160044DAEA /* GameDetailsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				074F5D3D23C610160044DAEA /* GameDetailsVC.swift in Sources */,
 				07BBB0D323AD315F001949BE /* APIManager.swift in Sources */,
 				07BBB0B223AD1060001949BE /* HomeVC.swift in Sources */,
 				07BBB0CD23AD1FA2001949BE /* Game.swift in Sources */,
