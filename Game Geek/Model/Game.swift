@@ -41,9 +41,9 @@ struct Platform: Codable {
 
 // MARK: - Genre
 struct GameGenre: Codable {
-    let id: Int
-    let name, slug: String
-    let gamesCount: Int
+    let id: Int?
+    let name, slug: String?
+    let gamesCount: Int?
 
     enum CodingKeys: String, CodingKey {
         case id, name, slug

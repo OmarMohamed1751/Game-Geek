@@ -15,20 +15,26 @@ class GameDetailVC: UIViewController {
     @IBOutlet weak var gameImage: UIImageView!
     @IBOutlet weak var gameNameView: UIView!
     @IBOutlet weak var gamePlatformsCollection: UICollectionView!
+    @IBOutlet weak var gameGenreCollection: UICollectionView!
     
     //MARK: - Vars and Lets
     var gameImageString = ""
     var gameNameString = ""
     var platformNameArr = [String]()
-    fileprivate let genreCellIdentifier = "PlatformCell"
-    
+    var genreArr = [String]()
+    fileprivate let platformCellIdentifier = "PlatformCell"
+    fileprivate let genreCellIdentifier = "GenreCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gamePlatformsCollection.register(UINib.init(nibName: genreCellIdentifier, bundle: nil), forCellWithReuseIdentifier: genreCellIdentifier)
+        gamePlatformsCollection.register(UINib.init(nibName: platformCellIdentifier, bundle: nil), forCellWithReuseIdentifier: platformCellIdentifier)
         gamePlatformsCollection.delegate = self
         gamePlatformsCollection.dataSource = self
+        
+        gameGenreCollection.register(UINib(nibName: genreCellIdentifier, bundle: nil), forCellWithReuseIdentifier: genreCellIdentifier)
+        gameGenreCollection.delegate = self
+        gameGenreCollection.dataSource = self
         
         detailsUISetup()
     }
@@ -51,17 +57,29 @@ class GameDetailVC: UIViewController {
     
     
 }
-
+//MARK: - Platforms and Genre collection
 extension GameDetailVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        platformNameArr.count
+        if collectionView == gamePlatformsCollection {
+            return platformNameArr.count
+        }
+        return genreArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: genreCellIdentifier, for: indexPath) as? PlatformCell else {return UICollectionViewCell()}
-        cell.Platform.text = platformNameArr[indexPath.row]
-        return cell
+        if collectionView == gamePlatformsCollection {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: platformCellIdentifier, for: indexPath) as? PlatformCell else {return UICollectionViewCell()}
+            cell.Platform.text = platformNameArr[indexPath.row]
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: genreCellIdentifier, for: indexPath) as? GenreCell else {return UICollectionViewCell()}
+            cell.genre.text = genreArr[indexPath.row]
+            return cell
+        }
+        
+        
     }
     
 }
+

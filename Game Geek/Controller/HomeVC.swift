@@ -259,20 +259,27 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
 
         guard let gameImage = allGamesArr[indexPath.row].backgroundImage else { return }
         guard let gameName = allGamesArr[indexPath.row].name else { return }
-        if let gamePlatform = allGamesArr[indexPath.row].platforms {
-            for platform in gamePlatform {
-                if let platformName = platform.platform?.name {
-                    gameDetailVC.platformNameArr.append(platformName)
-                    print(gameDetailVC.platformNameArr)
-                }
-            }
-        }
         
         gameDetailVC.gameImageString = gameImage
         gameDetailVC.gameNameString = gameName
         
-        navigationController?.pushViewController(gameDetailVC, animated: true)
+        if let gamePlatform = allGamesArr[indexPath.row].platforms {
+            for platform in gamePlatform {
+                if let platformName = platform.platform?.name {
+                    gameDetailVC.platformNameArr.append(platformName)
+                }
+            }
+        }
         
+        if let gameGenres = allGamesArr[indexPath.row].genres {
+            for genre in gameGenres {
+                if let genreName = genre.name{
+                    gameDetailVC.genreArr.append(genreName)
+                }
+            }
+        }
+        
+        navigationController?.pushViewController(gameDetailVC, animated: true)
         
     }
 }
