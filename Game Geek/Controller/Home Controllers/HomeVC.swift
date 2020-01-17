@@ -57,7 +57,6 @@ class HomeVC: UIViewController {
     
     // MARK: - Calling all genres function
     func setAllGenres() {
-        hud.show(in: self.view)
         API.getAllGenres(controller: self) { (error, genre) in
             if let error = error {
                 print(error)
@@ -74,17 +73,14 @@ class HomeVC: UIViewController {
                 }
             }
         }
-        hud.dismiss(afterDelay: 0.5)
     }
     
     // MARK: - Calling all games function
     func setAllGames() {
-        hud.show(in: self.view)
         self.pageCountLabel.text = "\(currentPage)"
         API.getAllGames(controller: self, pageCount: currentPage) { (error, game) in
             if let error = error {
                 print(error)
-                self.hud.dismiss(afterDelay: 0.5)
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let game = game {
@@ -98,7 +94,6 @@ class HomeVC: UIViewController {
                 self.previousBtn.isHidden = true
             }
         }
-        hud.dismiss(afterDelay: 0.5)
     }
     
     // MARK: - Back and Next buttons
@@ -275,6 +270,20 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             for genre in gameGenres {
                 if let genreName = genre.name{
                     gameDetailVC.genreArr.append(genreName)
+                }
+            }
+        }
+        
+        if let gameSlug = allGamesArr[indexPath.row].slug {
+            API.getGameDetails(controller: self, gameName: gameSlug) { (error, details) in
+                if let error = error {
+                    print(error)
+                    self.hud.dismiss(afterDelay: 0.5)
+                    self.showAlert(title: "Opps!", message: error.localizedDescription)
+                } else {
+                    if let details = details {
+                        gameDetailVC.gameDescriptionTextView.text = details.gameDescription
+                    }
                 }
             }
         }

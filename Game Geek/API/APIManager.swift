@@ -107,4 +107,51 @@ class API {
         }
     }
     
+    // MARK: - Game details
+    static func getGameDetails(controller: UIViewController, gameName: String, completion: @escaping(_ error: Error?, _ details: GameDetails?)-> Void){
+        let url = URLs.gameDetails + "\(gameName)"
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            switch response.result {
+                case .failure:
+                    guard let error = response.error else {return}
+                    print(error.localizedDescription)
+                    completion(error, nil)
+                    
+                case .success:
+                    guard let data = response.data else {return}
+                    let decoder = JSONDecoder()
+                    do {
+                        let decodedGameDetails = try decoder.decode(GameDetails.self, from: data)
+                        completion(nil, decodedGameDetails)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+            }
+        }
+    }
+    
+    //MARK: -
+    static func getAllStores(controller: UIViewController, completion: @escaping(_ error: Error?, _ stores: GameStore?)-> Void) {
+        let url = URLs.stores
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            switch response.result {
+                case .failure:
+                    guard let error = response.error else {return}
+                    print(error.localizedDescription)
+                    completion(error, nil)
+                    
+                case .success:
+                    guard let data = response.data else {return}
+                    let decoder = JSONDecoder()
+                    do {
+                        let decodedStores = try decoder.decode(GameStore.self, from: data)
+                        print("decoded stuff are here", decodedStores)
+                        completion(nil, decodedStores)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+            }
+        }
+    }
+    
 }

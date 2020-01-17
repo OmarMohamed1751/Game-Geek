@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="StoreCell" customModule="Game_Geek" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="140"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZZ-0k-Dci">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="140"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dollarsign.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ATP-Ay-8r8">
+                                <rect key="frame" x="25" y="10.5" width="100" height="99"/>
+                                <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Nqy-31-7z4"/>
+                                    <constraint firstAttribute="height" constant="100" id="zyX-bV-1iW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stor Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Uoc-nF-gzO">
+                                <rect key="frame" x="5" y="120" width="140" height="20"/>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ATP-Ay-8r8" firstAttribute="centerX" secondItem="wZZ-0k-Dci" secondAttribute="centerX" id="QcK-9k-afg"/>
+                            <constraint firstItem="Uoc-nF-gzO" firstAttribute="top" secondItem="ATP-Ay-8r8" secondAttribute="bottom" constant="10" id="jdi-4J-cQL"/>
+                            <constraint firstItem="ATP-Ay-8r8" firstAttribute="top" secondItem="wZZ-0k-Dci" secondAttribute="top" constant="10" id="qUq-4y-Wr2"/>
+                            <constraint firstAttribute="trailing" secondItem="Uoc-nF-gzO" secondAttribute="trailing" constant="5" id="thO-cv-cjz"/>
+                            <constraint firstItem="Uoc-nF-gzO" firstAttribute="leading" secondItem="wZZ-0k-Dci" secondAttribute="leading" constant="5" id="tsE-Zq-dIB"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="wZZ-0k-Dci" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="DIu-wk-IUY"/>
+                <constraint firstItem="wZZ-0k-Dci" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="akg-PF-Fn6"/>
+                <constraint firstAttribute="bottom" secondItem="wZZ-0k-Dci" secondAttribute="bottom" id="bcQ-oH-aI9"/>
+                <constraint firstAttribute="trailing" secondItem="wZZ-0k-Dci" secondAttribute="trailing" id="z4u-bw-HWT"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="148" height="134"/>
+            <connections>
+                <outlet property="containerView" destination="wZZ-0k-Dci" id="jbD-dj-2My"/>
+                <outlet property="storeImage" destination="ATP-Ay-8r8" id="MvI-bl-ZhG"/>
+                <outlet property="storeName" destination="Uoc-nF-gzO" id="h7a-tN-JYS"/>
+            </connections>
+            <point key="canvasLocation" x="124.6376811594203" y="154.35267857142856"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="dollarsign.circle.fill" catalog="system" width="64" height="60"/>
+    </resources>
+</document>

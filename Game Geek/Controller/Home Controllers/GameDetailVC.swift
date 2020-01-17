@@ -16,6 +16,7 @@ class GameDetailVC: UIViewController {
     @IBOutlet weak var gameNameView: UIView!
     @IBOutlet weak var gamePlatformsCollection: UICollectionView!
     @IBOutlet weak var gameGenreCollection: UICollectionView!
+    @IBOutlet weak var gameDescriptionTextView: UITextView!
     
     //MARK: - Vars and Lets
     var gameImageString = ""
@@ -49,10 +50,9 @@ class GameDetailVC: UIViewController {
         gameNameView.layer.cornerRadius = 10
         gameNameView.layer.borderWidth = 1
         gameNameView.layer.borderColor = #colorLiteral(red: 0, green: 0.7281640172, blue: 0.7614847422, alpha: 1)
-        
         gameImage.kf.setImage(with: URL(string: gameImageString), placeholder: UIImage(systemName: "gamecontroller.fill"))
         gameName.text = gameNameString
-        
+        gameDescriptionTextView.layer.cornerRadius = 5
     }
     
     
