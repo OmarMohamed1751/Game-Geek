@@ -130,9 +130,9 @@ class API {
         }
     }
     
-    //MARK: -
+    //MARK: - Stores
     static func getAllStores(controller: UIViewController, completion: @escaping(_ error: Error?, _ stores: GameStore?)-> Void) {
-        let url = URLs.stores
+        guard let url = Bundle.main.url(forResource: "Stores", withExtension: "json") else { return }
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             switch response.result {
                 case .failure:
@@ -145,7 +145,6 @@ class API {
                     let decoder = JSONDecoder()
                     do {
                         let decodedStores = try decoder.decode(GameStore.self, from: data)
-                        print("decoded stuff are here", decodedStores)
                         completion(nil, decodedStores)
                     } catch {
                         print(error.localizedDescription)
