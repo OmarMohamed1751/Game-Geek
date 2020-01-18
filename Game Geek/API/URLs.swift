@@ -14,5 +14,4 @@ struct URLs {
     static let allGenres = main + "genres"
     static let allGames = main + "games?page="
     static let gameDetails = main + "games/"
-    static let stores = main + "stores"
 }

@@ -288,6 +288,10 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             }
         }
         
+        if let shortScreenshots = allGamesArr[indexPath.row].shortScreenshots {
+            gameDetailVC.screenshotArr = shortScreenshots
+        }
+        
         navigationController?.pushViewController(gameDetailVC, animated: true)
         
     }

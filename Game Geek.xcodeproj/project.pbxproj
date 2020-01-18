@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07222FC323D350DA000C4E95 /* ScreenShotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07222FC123D350DA000C4E95 /* ScreenShotCell.swift */; };
+		07222FC423D350DA000C4E95 /* ScreenShotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07222FC223D350DA000C4E95 /* ScreenShotCell.xib */; };
 		074F5D3D23C610160044DAEA /* GameDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074F5D3C23C610160044DAEA /* GameDetailVC.swift */; };
 		0780A72923D1F10100262483 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0780A72823D1F10100262483 /* TabBarVC.swift */; };
 		0780A74B23D208BD00262483 /* GameDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0780A74A23D208BD00262483 /* GameDetails.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07222FC123D350DA000C4E95 /* ScreenShotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotCell.swift; sourceTree = "<group>"; };
+		07222FC223D350DA000C4E95 /* ScreenShotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScreenShotCell.xib; sourceTree = "<group>"; };
 		074F5D3C23C610160044DAEA /* GameDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailVC.swift; sourceTree = "<group>"; };
 		0780A72823D1F10100262483 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		0780A74A23D208BD00262483 /* GameDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetails.swift; sourceTree = "<group>"; };
@@ -82,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07222FC023D35076000C4E95 /* Screen Shots Collection Cell */ = {
+			isa = PBXGroup;
+			children = (
+				07222FC123D350DA000C4E95 /* ScreenShotCell.swift */,
+				07222FC223D350DA000C4E95 /* ScreenShotCell.xib */,
+			);
+			path = "Screen Shots Collection Cell";
+			sourceTree = "<group>";
+		};
 		0763DC3923AE669B00459345 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +167,7 @@
 				07BBB0C623AD1616001949BE /* Games Table Cell */,
 				07D1ABB823C66740004C85E9 /* Platfom Collection Cell */,
 				0780A74E23D24CC700262483 /* Stores Collection Cell */,
+				07222FC023D35076000C4E95 /* Screen Shots Collection Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,6 +339,7 @@
 			files = (
 				07D1ABBC23C6679E004C85E9 /* PlatformCell.xib in Resources */,
 				0780A75223D24EE700262483 /* StoreCell.xib in Resources */,
+				07222FC423D350DA000C4E95 /* ScreenShotCell.xib in Resources */,
 				07BBB0BA23AD1063001949BE /* LaunchScreen.storyboard in Resources */,
 				07C8167623D2792500C506E1 /* Stores.json in Resources */,
 				07BBB0B723AD1063001949BE /* Assets.xcassets in Resources */,
@@ -383,6 +398,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07222FC323D350DA000C4E95 /* ScreenShotCell.swift in Sources */,
 				074F5D3D23C610160044DAEA /* GameDetailVC.swift in Sources */,
 				07BBB0D323AD315F001949BE /* APIManager.swift in Sources */,
 				07F8509223D1E91600E7351C /* StoresVC.swift in Sources */,
