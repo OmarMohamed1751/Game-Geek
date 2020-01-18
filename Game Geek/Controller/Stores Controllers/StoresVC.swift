@@ -65,8 +65,7 @@ extension StoresVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize.init(width: 150 , height: 150)
+        return CGSize.init(width: collectionView.bounds.width/2 - 10 , height: 170)
     }
     
 }
