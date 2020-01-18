@@ -116,12 +116,24 @@
                                     <constraint firstAttribute="height" constant="40" id="eE9-b8-Shf"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing To Show Here!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="TV0-lQ-87N">
+                                <rect key="frame" x="7" y="373.5" width="400" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="BFZ-ym-6T7"/>
+                                    <constraint firstAttribute="height" constant="110" id="VnO-cw-jCi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.13333333333333333" green="0.15686274509803921" blue="0.19215686274509802" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="IPu-mt-MMn" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="419-hJ-XVM"/>
+                            <constraint firstItem="TV0-lQ-87N" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="DRv-sk-4v4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="IPu-mt-MMn" secondAttribute="bottom" constant="5" id="IJS-C9-E3N"/>
                             <constraint firstItem="IPu-mt-MMn" firstAttribute="top" secondItem="MnA-he-imK" secondAttribute="bottom" constant="5" id="IyQ-hb-iRI"/>
+                            <constraint firstItem="TV0-lQ-87N" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Me3-JB-AAl"/>
                             <constraint firstItem="MnA-he-imK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-5" id="Wm0-h9-qFk"/>
                             <constraint firstItem="MnA-he-imK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="ZxN-WJ-N6W"/>
                             <constraint firstItem="h3H-Z9-5Mg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="350:414" id="g9F-oD-ZSL"/>
@@ -135,6 +147,7 @@
                     <connections>
                         <outlet property="gameListTable" destination="MnA-he-imK" id="BbB-QB-lws"/>
                         <outlet property="genreCollection" destination="h3H-Z9-5Mg" id="Zbl-th-8Pu"/>
+                        <outlet property="infoLbl" destination="TV0-lQ-87N" id="Kud-3j-Z49"/>
                         <outlet property="nextBtn" destination="ird-pV-lhh" id="7kn-8l-lFl"/>
                         <outlet property="pageCountLabel" destination="qpo-ps-Tcg" id="azK-oT-pBb"/>
                         <outlet property="pageCountView" destination="T9I-mS-ml4" id="UbV-UV-V6k"/>
@@ -152,14 +165,78 @@
                     <view key="view" contentMode="scaleToFill" id="uw1-Jn-3ec">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3si-4N-qaV">
+                                <rect key="frame" x="5" y="124" width="404" height="689"/>
+                                <color key="backgroundColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bdu-RV-JhW">
+                                <rect key="frame" x="5" y="54" width="404" height="60"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="g5p-DO-ZaJ">
+                                        <rect key="frame" x="5" y="5.5" width="50" height="49"/>
+                                        <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="J6i-00-g2W"/>
+                                            <constraint firstAttribute="height" constant="50" id="VEp-EX-t7r"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Ex: grand-theft-auto-v" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gem-kn-bFd">
+                                        <rect key="frame" x="60" y="5" width="334" height="50"/>
+                                        <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="a49-Hv-0v5"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="g5p-DO-ZaJ" firstAttribute="leading" secondItem="Bdu-RV-JhW" secondAttribute="leading" constant="5" id="0b7-YV-8nh"/>
+                                    <constraint firstAttribute="height" constant="60" id="Ha5-cD-du2"/>
+                                    <constraint firstItem="gem-kn-bFd" firstAttribute="centerY" secondItem="Bdu-RV-JhW" secondAttribute="centerY" id="KXP-Gd-kkN"/>
+                                    <constraint firstItem="gem-kn-bFd" firstAttribute="leading" secondItem="g5p-DO-ZaJ" secondAttribute="trailing" constant="5" id="ZTP-oH-gdv"/>
+                                    <constraint firstAttribute="trailing" secondItem="gem-kn-bFd" secondAttribute="trailing" constant="10" id="fwy-nn-Mzu"/>
+                                    <constraint firstItem="g5p-DO-ZaJ" firstAttribute="centerY" secondItem="Bdu-RV-JhW" secondAttribute="centerY" id="ndj-dQ-kM0"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Write Your Game Name In The Search Bar Above!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="kWe-XV-YyJ">
+                                <rect key="frame" x="7" y="373.5" width="400" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="bCL-7W-FQp"/>
+                                    <constraint firstAttribute="width" constant="400" id="dOd-np-NAN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="3si-4N-qaV" firstAttribute="top" secondItem="Bdu-RV-JhW" secondAttribute="bottom" constant="10" id="4vl-eR-vay"/>
+                            <constraint firstItem="kWe-XV-YyJ" firstAttribute="centerY" secondItem="BBW-Vb-dwF" secondAttribute="centerY" id="FGl-7g-5dW"/>
+                            <constraint firstItem="3si-4N-qaV" firstAttribute="leading" secondItem="BBW-Vb-dwF" secondAttribute="leading" constant="5" id="J4S-eE-0S4"/>
+                            <constraint firstItem="3si-4N-qaV" firstAttribute="bottom" secondItem="BBW-Vb-dwF" secondAttribute="bottom" id="LWS-cK-sfZ"/>
+                            <constraint firstItem="BBW-Vb-dwF" firstAttribute="trailing" secondItem="3si-4N-qaV" secondAttribute="trailing" constant="5" id="MP3-28-SR5"/>
+                            <constraint firstItem="Bdu-RV-JhW" firstAttribute="top" secondItem="BBW-Vb-dwF" secondAttribute="top" constant="10" id="SqQ-9m-rz6"/>
+                            <constraint firstItem="Bdu-RV-JhW" firstAttribute="leading" secondItem="BBW-Vb-dwF" secondAttribute="leading" constant="5" id="cUj-Ix-oTM"/>
+                            <constraint firstItem="BBW-Vb-dwF" firstAttribute="trailing" secondItem="Bdu-RV-JhW" secondAttribute="trailing" constant="5" id="tek-sf-tBC"/>
+                            <constraint firstItem="kWe-XV-YyJ" firstAttribute="centerX" secondItem="BBW-Vb-dwF" secondAttribute="centerX" id="u1x-ER-DKY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BBW-Vb-dwF"/>
                     </view>
                     <navigationItem key="navigationItem" id="5fW-fG-sVy"/>
+                    <connections>
+                        <outlet property="gameTable" destination="3si-4N-qaV" id="5zq-dg-4jz"/>
+                        <outlet property="infoLbl" destination="kWe-XV-YyJ" id="9uz-a5-YL6"/>
+                        <outlet property="searchText" destination="gem-kn-bFd" id="zfb-Pz-pFt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAL-pg-iac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042" y="824"/>
+            <point key="canvasLocation" x="1039.1304347826087" y="823.66071428571422"/>
         </scene>
         <!--Game DetailVC-->
         <scene sceneID="GYk-k3-V5O">

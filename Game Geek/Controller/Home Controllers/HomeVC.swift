@@ -12,6 +12,7 @@ import JGProgressHUD
 class HomeVC: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var infoLbl: UILabel!
     @IBOutlet weak var genreCollection: UICollectionView!
     @IBOutlet weak var gameListTable: UITableView!
     @IBOutlet weak var previousBtn: UIButton!
@@ -53,6 +54,7 @@ class HomeVC: UIViewController {
         self.previousBtn.isHidden = true
         self.pageCountView.layer.cornerRadius = pageCountView.bounds.height / 2
         hud.dismiss(afterDelay: 0.5)
+        self.infoLbl.isHidden = true
     }
     
     // MARK: - Calling all genres function
@@ -187,9 +189,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if indexPath.row == 0 {
             self.setAllGames()
         } else {
-//            print(indexPath.row)
-//            print(genresArr[indexPath.row])
-            print(genresArr[indexPath.row].games ?? [])
             hud.show(in: self.view)
             API.getAllGames(controller: self, pageCount: currentPage) { (error, games) in
                 if let error = error {
@@ -210,11 +209,12 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                                         }
                                     }
                                 }
+                                self.infoLbl.isHidden = true
                                 self.gameListTable.reloadData()
                             }
                             
                             if self.allGamesArr.isEmpty {
-                                self.showAlert(title: "Nothing to show here", message: nil)
+                                self.infoLbl.isHidden = false
                             }
                         }
                     }
@@ -278,7 +278,6 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             API.getGameDetails(controller: self, gameName: gameSlug) { (error, details) in
                 if let error = error {
                     print(error)
-                    self.hud.dismiss(afterDelay: 0.5)
                     self.showAlert(title: "Opps!", message: error.localizedDescription)
                 } else {
                     if let details = details {

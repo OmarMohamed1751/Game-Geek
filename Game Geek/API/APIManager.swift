@@ -109,7 +109,7 @@ class API {
     
     // MARK: - Game details
     static func getGameDetails(controller: UIViewController, gameName: String, completion: @escaping(_ error: Error?, _ details: GameDetails?)-> Void){
-        let url = URLs.gameDetails + "\(gameName)"
+        let url = URLs.gameName + "\(gameName)"
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
             switch response.result {
                 case .failure:
@@ -149,6 +149,29 @@ class API {
                     } catch {
                         print(error.localizedDescription)
                     }
+            }
+        }
+    }
+    
+    // MARK: - Game search
+    static func getSearchedGame(controller: UIViewController, gameName: String, completion: @escaping(_ error: Error?, _ games: Game?)-> Void) {
+        let url = URLs.gameName + "\(gameName)"
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            switch response.result {
+            case .failure:
+                guard let error = response.error else {return}
+                print(error.localizedDescription)
+                completion(error, nil)
+                
+            case .success:
+                guard let data = response.data else {return}
+                let decoder = JSONDecoder()
+                do {
+                    let decodedGames = try decoder.decode(Game.self, from: data)
+                    completion(nil, decodedGames)
+                } catch {
+                    print(error.localizedDescription)
+                }
             }
         }
     }
