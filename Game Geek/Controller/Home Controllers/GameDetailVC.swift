@@ -65,6 +65,7 @@ class GameDetailVC: UIViewController {
     
     
 }
+
 //MARK: - Platforms and Genre collection
 extension GameDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -101,7 +102,13 @@ extension GameDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: screenShotsCollection.bounds.width, height: screenShotsCollection.bounds.height)
+        if collectionView == gamePlatformsCollection {
+            return CGSize(width: gamePlatformsCollection.bounds.width, height: gamePlatformsCollection.bounds.height)
+        } else if collectionView == gameGenreCollection {
+            return CGSize(width: gameGenreCollection.bounds.width, height: gameGenreCollection.bounds.height)
+        } else {
+            return CGSize(width: screenShotsCollection.bounds.width, height: screenShotsCollection.bounds.height)
+        }
     }
     
 }

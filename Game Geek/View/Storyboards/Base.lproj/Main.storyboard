@@ -265,8 +265,9 @@
                                                 <action selector="backBtn:" destination="s5H-xF-vu2" eventType="touchUpInside" id="x1U-np-EZT"/>
                                             </connections>
                                         </button>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8vB-Un-FDf">
-                                            <rect key="frame" x="0.0" y="95" width="404" height="200"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gamecontroller.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8vB-Un-FDf">
+                                            <rect key="frame" x="0.0" y="96" width="404" height="197.5"/>
+                                            <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="TG3-9t-35S"/>
                                             </constraints>
