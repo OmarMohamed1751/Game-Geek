@@ -45,20 +45,20 @@ class HomeVC: UIViewController {
     
     // MARK: - UI Setup
     func basicUISetup() {
-        showIndicator(withTitle: "Loading..", and: "")
         setAllGenres()
         setAllGames()
         self.previousBtn.isHidden = true
         self.pageCountView.layer.cornerRadius = pageCountView.bounds.height / 2
         self.infoLbl.isHidden = true
-        hideIndicator()
     }
     
     // MARK: - Calling all genres function
     func setAllGenres() {
+        showIndicator(withTitle: "Loading..", and: "")
         API.getAllGenres(controller: self) { (error, genre) in
             if let error = error {
                 print(error)
+                self.hideIndicator()
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let genre = genre {
@@ -70,15 +70,18 @@ class HomeVC: UIViewController {
                     }
                 }
             }
+            self.hideIndicator()
         }
     }
     
     // MARK: - Calling all games function
     func setAllGames() {
+        showIndicator(withTitle: "Loading..", and: "")
         self.pageCountLabel.text = "\(currentPage)"
         API.getAllGames(controller: self, pageCount: currentPage) { (error, game) in
             if let error = error {
                 print(error)
+                self.hideIndicator()
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let game = game {
@@ -88,9 +91,18 @@ class HomeVC: UIViewController {
                     }
                 }
             }
+            
             if self.previousPage == 0 {
                 self.previousBtn.isHidden = true
             }
+            
+            if self.allGamesArr.isEmpty {
+                self.infoLbl.isHidden = false
+            } else {
+                self.infoLbl.isHidden = true
+            }
+            
+            self.hideIndicator()
         }
     }
     
@@ -113,18 +125,25 @@ class HomeVC: UIViewController {
                         self.gameListTable.reloadData()
                     }
                 }
-                
-                for item in 0 ..< self.genresArr.count {
-                    self.genresArr[item].isSelected = false
-                }
-                self.genresArr[0].isSelected = true
-                self.genreCollection.reloadData()
-                
-                if self.previousPage == 0 {
-                    self.previousBtn.isHidden = true
-                }
-                self.hideIndicator()
             }
+            
+            for item in 0 ..< self.genresArr.count {
+                self.genresArr[item].isSelected = false
+            }
+            self.genresArr[0].isSelected = true
+            self.genreCollection.reloadData()
+            
+            if self.previousPage == 0 {
+                self.previousBtn.isHidden = true
+            }
+            
+            if self.allGamesArr.isEmpty {
+                self.infoLbl.isHidden = false
+            } else {
+                self.infoLbl.isHidden = true
+            }
+            
+            self.hideIndicator()
         }
     }
     
@@ -147,14 +166,21 @@ class HomeVC: UIViewController {
                         self.previousBtn.isHidden = false
                     }
                 }
-                
-                for item in 0 ..< self.genresArr.count {
-                    self.genresArr[item].isSelected = false
-                }
-                self.genresArr[0].isSelected = true
-                self.genreCollection.reloadData()
-                self.hideIndicator()
             }
+            
+            for item in 0 ..< self.genresArr.count {
+                self.genresArr[item].isSelected = false
+            }
+            self.genresArr[0].isSelected = true
+            self.genreCollection.reloadData()
+            
+            if self.allGamesArr.isEmpty {
+                self.infoLbl.isHidden = false
+            } else {
+                self.infoLbl.isHidden = true
+            }
+            
+            self.hideIndicator()
         }
     }
     
