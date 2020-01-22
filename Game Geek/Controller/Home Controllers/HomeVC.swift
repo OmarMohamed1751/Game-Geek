@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import JGProgressHUD
 
 class HomeVC: UIViewController {
     
@@ -23,7 +22,6 @@ class HomeVC: UIViewController {
     // MARK: - Vars and Lets
     fileprivate let gameCellIdentifier = "GameCell"
     fileprivate let genreCellIdentifier = "GenreCell"
-    let hud = JGProgressHUD(style: .dark)
     var genresArr = [Result]()
     var allGamesArr = [GameResult]()
     var currentPage = 1
@@ -47,14 +45,13 @@ class HomeVC: UIViewController {
     
     // MARK: - UI Setup
     func basicUISetup() {
-        hud.textLabel.text = "Loading"
-        hud.show(in: self.view)
+        showIndicator(withTitle: "Loading..", and: "")
         setAllGenres()
         setAllGames()
         self.previousBtn.isHidden = true
         self.pageCountView.layer.cornerRadius = pageCountView.bounds.height / 2
-        hud.dismiss(afterDelay: 0.5)
         self.infoLbl.isHidden = true
+        hideIndicator()
     }
     
     // MARK: - Calling all genres function
@@ -62,7 +59,6 @@ class HomeVC: UIViewController {
         API.getAllGenres(controller: self) { (error, genre) in
             if let error = error {
                 print(error)
-                self.hud.dismiss(afterDelay: 0.5)
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let genre = genre {
@@ -100,13 +96,13 @@ class HomeVC: UIViewController {
     
     // MARK: - Back and Next buttons
     @IBAction func previousBtn(_ sender: UIButton) {
-        hud.show(in: self.view)
+        showIndicator(withTitle: "Loading..", and: "")
         self.pageCountLabel.text = "\(currentPage - 1)"
         API.getPreviousGames(controller: self, pageCount: previousPage) { (error, game) in
             if let error = error {
                 print(error)
-                self.hud.dismiss(afterDelay: 0.5)
-                self.showAlert(title: "Opps!", message: error.localizedDescription)
+                self.showIndicator(withTitle: "Loading..", and: "")
+                self.hideIndicator()
             } else {
                 if let game = game {
                     if let allGames = game.results {
@@ -118,8 +114,8 @@ class HomeVC: UIViewController {
                     }
                 }
                 
-                for i in 0 ..< self.genresArr.count {
-                    self.genresArr[i].isSelected = false
+                for item in 0 ..< self.genresArr.count {
+                    self.genresArr[item].isSelected = false
                 }
                 self.genresArr[0].isSelected = true
                 self.genreCollection.reloadData()
@@ -127,39 +123,39 @@ class HomeVC: UIViewController {
                 if self.previousPage == 0 {
                     self.previousBtn.isHidden = true
                 }
+                self.hideIndicator()
             }
         }
-        hud.dismiss(afterDelay: 0.5)
     }
     
     @IBAction func nextBtn(_ sender: UIButton) {
-        hud.show(in: self.view)
+        showIndicator(withTitle: "Loading..", and: "")
         self.currentPage += 1
         self.pageCountLabel.text = "\(currentPage)"
         API.getNextGames(controller: self, pageCount: currentPage) { (error, game) in
             if let error = error {
                 print(error)
-                self.hud.dismiss(afterDelay: 0.5)
+                self.hideIndicator()
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let game = game {
                     if let allGames = game.results {
                         self.allGamesArr.removeAll()
                         self.allGamesArr = allGames
-                        self.previousPage += 1
                         self.gameListTable.reloadData()
+                        self.previousPage += 1
                         self.previousBtn.isHidden = false
                     }
                 }
                 
-                for i in 0 ..< self.genresArr.count {
-                    self.genresArr[i].isSelected = false
+                for item in 0 ..< self.genresArr.count {
+                    self.genresArr[item].isSelected = false
                 }
                 self.genresArr[0].isSelected = true
                 self.genreCollection.reloadData()
+                self.hideIndicator()
             }
         }
-        hud.dismiss(afterDelay: 0.5)
     }
     
 }
@@ -186,20 +182,20 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showIndicator(withTitle: "Loading..", and: "")
         if indexPath.row == 0 {
             self.setAllGames()
+            self.hideIndicator()
         } else {
-            hud.show(in: self.view)
             API.getAllGames(controller: self, pageCount: currentPage) { (error, games) in
                 if let error = error {
                     print(error)
-                    self.hud.dismiss(afterDelay: 0.5)
+                    self.hideIndicator()
                     self.showAlert(title: "Opps!", message: error.localizedDescription)
                 } else {
                     self.allGamesArr.removeAll()
                     if let game = games {
                         if let allGames = game.results {
-                            
                             for game in allGames {
                                 if let genres = game.genres {
                                     for genre in genres {
@@ -218,13 +214,13 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                             }
                         }
                     }
+                    self.hideIndicator()
                 }
             }
-            hud.dismiss(afterDelay: 0.5)
         }
         
-        for i in 0..<genresArr.count {
-            genresArr[i].isSelected = false
+        for item in 0 ..< genresArr.count {
+            genresArr[item].isSelected = false
         }
         genresArr[indexPath.row].isSelected = true
         collectionView.reloadData()

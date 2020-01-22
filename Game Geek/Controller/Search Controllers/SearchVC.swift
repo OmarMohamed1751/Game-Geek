@@ -58,6 +58,10 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         gameDetailVC.gameImageString = gameImage
         gameDetailVC.gameNameString = gameName
         
+        if let gameName = allGamesArr[indexPath.row].name {
+            gameDetailVC.gameName.text = gameName
+        }
+        
         if let gamePlatform = gamesFilteredArr[indexPath.row].platforms {
             for platform in gamePlatform {
                 if let platformName = platform.platform?.name {

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import JGProgressHUD
 
 class StoresVC: UIViewController {
     
@@ -15,7 +14,6 @@ class StoresVC: UIViewController {
     
     fileprivate let storeCellIdentifier = "StoreCell"
     var allStoresArr = [StoreResult]()
-    let hud = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +27,9 @@ class StoresVC: UIViewController {
     }
     
     func setupUI() {
-        hud.textLabel.text = "Loading"
-        hud.show(in: self.view)
+        showIndicator(withTitle: "Loading..", and: "")
         getAllStores()
-        hud.dismiss(afterDelay: 0.5)
+        hideIndicator()
     }
     
     func getAllStores() {

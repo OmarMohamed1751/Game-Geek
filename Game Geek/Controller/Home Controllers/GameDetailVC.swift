@@ -48,11 +48,8 @@ class GameDetailVC: UIViewController {
         detailsUISetup()
     }
     
-    @IBAction func backBtn(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
-    }
-    
     func detailsUISetup() {
+        showIndicator(withTitle: "Loading..", and: "")
         gameName.adjustsFontSizeToFitWidth = true
         gameImage.layer.cornerRadius = 10
         gameNameView.layer.cornerRadius = 10
@@ -61,8 +58,12 @@ class GameDetailVC: UIViewController {
         gameImage.kf.setImage(with: URL(string: gameImageString), placeholder: UIImage(systemName: "gamecontroller.fill"))
         gameName.text = gameNameString
         gameDescriptionTextView.layer.cornerRadius = 5
+        hideIndicator()
     }
     
+    @IBAction func backBtn(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
     
 }
 
