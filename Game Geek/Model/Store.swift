@@ -15,12 +15,13 @@ struct GameStore: Codable {
 
 // MARK: - Result
 struct StoreResult: Codable {
-    let id: Int?
-    let name, domain, slug: String?
+    let storeId: Int?
+    let name, domain, slug, description: String?
     let imageBackground: String?
 
     enum CodingKeys: String, CodingKey {
-        case id, name, domain, slug
+        case name, description, domain, slug
+        case storeId = "id"
         case imageBackground = "image_background"
     }
 }

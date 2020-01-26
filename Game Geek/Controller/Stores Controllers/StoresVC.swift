@@ -65,4 +65,23 @@ extension StoresVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         return CGSize.init(width: collectionView.bounds.width/2 - 10 , height: 170)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let storeDetailVC = storyboard?.instantiateViewController(withIdentifier: "StoreDetailsVC") as? StoreDetailsVC else { return }
+        
+        guard let storeName = allStoresArr[indexPath.row].name else { return }
+        storeDetailVC.storeNameString = storeName
+        
+        guard let storeImageURl = allStoresArr[indexPath.row].imageBackground else { return }
+        storeDetailVC.storeImageURLString = storeImageURl
+        
+        guard let storeDescription = allStoresArr[indexPath.row].description else { return }
+        storeDetailVC.storeDescriptionString = storeDescription
+        
+        if let storeURL = allStoresArr[indexPath.row].domain {
+            storeDetailVC.storeURLString = storeURL
+        }
+        
+        navigationController?.pushViewController(storeDetailVC, animated: true)
+    }
+    
 }

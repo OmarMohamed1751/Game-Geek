@@ -9,7 +9,6 @@
 import Foundation
 
 struct URLs {
-    
     static let main = "https://api.rawg.io/api/"
     static let allGenres = main + "genres"
     static let allGames = main + "games?page="

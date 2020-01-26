@@ -275,10 +275,16 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         guard let gameDetailVC = storyboard?.instantiateViewController(withIdentifier: "GameDetailVC") as? GameDetailVC else { return }
 
         guard let gameImage = allGamesArr[indexPath.row].backgroundImage else { return }
-        guard let gameName = allGamesArr[indexPath.row].name else { return }
-        
         gameDetailVC.gameImageString = gameImage
+        
+        guard let gameName = allGamesArr[indexPath.row].name else { return }
         gameDetailVC.gameNameString = gameName
+        
+        guard let releaseDate = allGamesArr[indexPath.row].released else { return }
+        gameDetailVC.releaseDateString = releaseDate
+        
+        guard let gameRate = allGamesArr[indexPath.row].rating else { return }
+        gameDetailVC.gameRateString = "\(gameRate)"
         
         if let gamePlatform = allGamesArr[indexPath.row].platforms {
             for platform in gamePlatform {
@@ -304,6 +310,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
                 } else {
                     if let details = details {
                         gameDetailVC.gameDescriptionTextView.text = details.gameDescription
+                        gameDetailVC.gameWebsiteLbl.text = details.website ?? "We Couldn't Find The Game Website!"
                     }
                 }
             }
@@ -311,6 +318,10 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         
         if let shortScreenshots = allGamesArr[indexPath.row].shortScreenshots {
             gameDetailVC.screenshotArr = shortScreenshots
+        }
+        
+        if let gameVideoURL = allGamesArr[indexPath.row].clip?.clips?.full {
+           
         }
         
         navigationController?.pushViewController(gameDetailVC, animated: true)

@@ -18,10 +18,18 @@ class GameDetailVC: UIViewController {
     @IBOutlet weak var gameGenreCollection: UICollectionView!
     @IBOutlet weak var gameDescriptionTextView: UITextView!
     @IBOutlet weak var screenShotsCollection: UICollectionView!
+    @IBOutlet weak var videoView: UIView!
+    
+    @IBOutlet weak var gameWebsiteLbl: UILabel!
+    @IBOutlet weak var releaseAndRateView: UIView!
+    @IBOutlet weak var releaseDate: UILabel!
+    @IBOutlet weak var gameRate: UILabel!
     
     //MARK: - Vars and Lets
     var gameImageString = ""
     var gameNameString = ""
+    var releaseDateString = ""
+    var gameRateString = ""
     var platformNameArr = [String]()
     var genreArr = [String]()
     var screenshotArr = [ShortScreenshot]()
@@ -45,10 +53,10 @@ class GameDetailVC: UIViewController {
         screenShotsCollection.delegate = self
         screenShotsCollection.dataSource = self
         
-        detailsUISetup()
+        basicUISetup()
     }
     
-    func detailsUISetup() {
+    func basicUISetup() {
         showIndicator(withTitle: "Loading..", and: "")
         gameName.adjustsFontSizeToFitWidth = true
         gameImage.layer.cornerRadius = 10
@@ -56,8 +64,14 @@ class GameDetailVC: UIViewController {
         gameNameView.layer.borderWidth = 1
         gameNameView.layer.borderColor = #colorLiteral(red: 0, green: 0.7281640172, blue: 0.7614847422, alpha: 1)
         gameImage.kf.setImage(with: URL(string: gameImageString), placeholder: UIImage(systemName: "gamecontroller.fill"))
+        releaseAndRateView.layer.cornerRadius = 10
+        releaseAndRateView.layer.borderColor = #colorLiteral(red: 0.9333333333, green: 0.9333333333, blue: 0.9333333333, alpha: 1)
+        releaseAndRateView.layer.borderWidth = 0.5
         gameName.text = gameNameString
+        releaseDate.text = releaseDateString
+        gameRate.text = gameRateString
         gameDescriptionTextView.layer.cornerRadius = 5
+        videoView.layer.cornerRadius = 5
         hideIndicator()
     }
     
@@ -65,6 +79,10 @@ class GameDetailVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func weblinkIsTapped(_ sender: UIButton) {
+        guard let url = URL(string: gameWebsiteLbl.text ?? "We Couldn't Find The Game Website!") else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
 }
 
 //MARK: - Platforms and Genre collection

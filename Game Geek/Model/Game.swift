@@ -23,9 +23,11 @@ struct GameResult: Codable {
     let platforms: [PlatformElement]?
     let genres: [GameGenre]?
     let shortScreenshots: [ShortScreenshot]?
+    let clip: GameClip?
+    let stores: [StoreElement]?
     
     enum CodingKeys: String, CodingKey{
-        case id, slug, name, released, rating, platforms, genres
+        case id, slug, name, released, rating, platforms, genres, clip, stores
         case backgroundImage = "background_image"
         case shortScreenshots = "short_screenshots"
     }
@@ -56,4 +58,29 @@ struct GameGenre: Codable {
 // MARK: - ShortScreenshot
 struct ShortScreenshot: Codable {
     let image: String?
+}
+
+// MARK: - GameClip
+struct GameClip: Codable {
+    let clips: GameClips?
+}
+
+// MARK: - GameClips
+struct GameClips: Codable {
+    let the320, the640, full: String?
+
+    enum CodingKeys: String, CodingKey {
+        case the320 = "320"
+        case the640 = "640"
+        case full
+    }
+}
+
+// MARK: - StoreElement
+struct StoreElement: Codable {
+    let storeId: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case storeId = "id"
+    }
 }

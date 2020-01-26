@@ -3,7 +3,8 @@
     {
       "id": 1,
       "name": "Steam",
-      "domain": "store.steampowered.com",
+      "description": "Steam is an online video game store launched in 2003 by Valve. Games on Steam can be played on PCs, including Windows, Mac, and Linux systems. There are dozens of thousands of titles there with over 100 million active users all over the world. Games on Steam are ranged by genres and popularity; more games are recommended to players depending on their previous purchases. Some games on Steam require special hardware, such as VR-headsets or controllers. Time-limited offers, personal recommendations, and holiday bundles are featured on the main Steam page. Players can add games to their Steam wishlists to track them down and get a notification when they are out. Steam also acts as a social network for PC players that can discuss and rate games and get achievements. In 2018 Valve released Steam TV - a service to stream international game tournaments.",
+      "domain": "http://store.steampowered.com",
       "slug": "steam",
       "games_count": 39752,
       "image_background": "https://cdn.wallpapersafari.com/3/35/qBDhNw.jpg",
@@ -50,7 +51,8 @@
     {
       "id": 3,
       "name": "PlayStation Store",
-      "domain": "store.playstation.com",
+      "description": "Games for PlayStation can be purchased on PlayStation Store, an online market for Sony consoles. PlayStation Store provides products for PlayStation 3, PlayStation 4 and PlayStation Portable. It was launched in 2006 for PS3 and later started supporting other consoles. PlayStation Store is accessible on PC, smartphones and Smart TV too. Besides games, players can buy on PlayStation Store additional materials, such as soundtracks, themes, and so on. Games on PlayStation Store include playable demos and free of charge titles along with buy-to-play games. The store also features the PlayStation Plus program - a payable subscription that offers special discounts for subscribers. Games on PlayStation Store are separated depending on their genre, price, popularity, and format. The service also shows personal recommendations, PS exclusives, and games that require special hardware, such as VR-headsets and controllers.",
+      "domain": "http://store.playstation.com",
       "slug": "playstation-store",
       "games_count": 6100,
       "image_background": "https://www.actugaming.net/wp-content/uploads/2019/01/ps-store.jpg",
@@ -97,7 +99,8 @@
     {
       "id": 2,
       "name": "Xbox Store",
-      "domain": "microsoft.com",
+      "description": "Games on Xbox can be purchased on Microsoft Store. This service provides games, consoles and accessories primarily for Xbox One. Games on Xbox are divided into subcategories, such as new releases, exclusives, online and multiplayer titles. The service also shows discounts and special offerings for Xbox Live Gold subscribers. Indie games and Xbox exclusives can always be required via Xbox Game Pass that features over 100 games for the monthly price. Games on every subcategory can also be ranged depending on their genre, features and maturity rating. Some of Xbox titles require additional devices, for example, VR-headsets and special controllers. Xbox Play Anywhere games can be played both on the console and PC. Xbox provides space for users to create their own gaming communities, find teammates, create tournaments and watch streams.",
+      "domain": "http://microsoft.com",
       "slug": "xbox-store",
       "games_count": 2653,
       "image_background": "https://attackofthefanboy.com/wp-content/uploads/2015/11/xbox-one-logo-760x427.jpg",
@@ -144,7 +147,8 @@
     {
       "id": 4,
       "name": "App Store",
-      "domain": "apps.apple.com",
+      "description": "App Store is an application store, a part of the iTunes Store that provides apps for Apple devices: iPhones, iPads, iPods Touch and Mac computers. It was launched by Apple in 2008. The store features over 2 million apps and has over 500 million active users. Games are one of the segments of all AppStore content: it also includes musical, graphical, social and other applications, articles and interviews. There are free-to-play and buy-to-play games on AppStore. They are split into different compilations depending on the monetization model they use, genres, and personal recommendations. Many of the games on AppStore are mobile versions of PC and console titles. Some games use AR-technology. To download or purchase games on AppStore, players use their Apple ID - the authentication system that provides access to all Apple services.",
+      "domain": "http://apps.apple.com",
       "slug": "apple-appstore",
       "games_count": 63376,
       "image_background": "https://www.macworld.co.uk/cmsdata/features/3598048/iphone_cant_connect_to_app_store_800home_thumb800.jpg",
@@ -191,7 +195,8 @@
     {
       "id": 5,
       "name": "GOG",
-      "domain": "gog.com",
+      "description": "GOG.com (previously Good Old Games) is an online video game store created by Polish developing and publishing company CD Projekt. Games on GOG.com can be played on PC, including Windows, Mac, and Linux systems. The service does not require any special programs to download games but players can use a launcher named GOG Galaxy if they want. Games on GOG.com are divided into several categories. They are combined depending on genres, price, and popularity. Along with games users get all additional materials, such as soundtracks, arts, and guides. Firstly, GOG.com policy covered games of $5-10 cost but now the service provides titles of different range and price. Special offers and sales are featured on the main page too. GOG.com also provides users with space to communicate, discuss games and vote for the titles they would like to see on GOG.com.",
+      "domain": "http://gog.com",
       "slug": "gog",
       "games_count": 2468,
       "image_background": "https://cdn.vox-cdn.com/thumbor/TBnb2JKX2YgPhYfQJNBoguX3RhI=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/13075537/unnamed.0.0.1495905354.jpg",
@@ -238,7 +243,8 @@
     {
       "id": 6,
       "name": "Nintendo Store",
-      "domain": "nintendo.com",
+      "description": "Nintendo is a Japanese developing and publishing company founded in 1889. Nintendo develops their own consoles, and currently supports four of them: Nintendo Switch, Nintendo 3DS/Nintendo 2DS, and Wii U. Games for Nintendo consoles can be purchased on the official online marketplace. Titles are grouped depending on which console supports them, and upcoming games are featured on the main page. Moreover, Nintendo suggests game collections based on their famous franchises - Mario, Castlevania, Pokémon - along with indie exclusives for Nintendo, online multiplayer titles and special offers. Additionally, games are ranged by genres, available DLCs and demos, and users&#39; playstyle.",
+      "domain": "http://nintendo.com",
       "slug": "nintendo",
       "games_count": 7618,
       "image_background": "https://cdn02.nintendo-europe.com/media/images/10_share_images/others_3/SI_GenericNintendo.jpg",
@@ -285,7 +291,8 @@
     {
       "id": 7,
       "name": "Xbox 360 Store",
-      "domain": "marketplace.xbox.com",
+      "description": "Games on Xbox 360 can be purchased on Microsoft Store. It is a past generation console developed in 2005. Modern games can be played on it only if they support backward compatibility. Xbox 360 games that require special accessories and the Kinect controller are not compatible with Xbox One consoles. More Xbox One functions (online multiplayer, streaming and others) are only available for Xbox Live Gold members. Xbox 360 Games are located in Xbox 360 Marketplace. They are ranged by their genre, game ratings and can be sorted by popularity and release date. Many games for Xbox 360 were remastered for Xbox One, and now about 1,5 thousand games are available in Xbox 360 Marketplace.",
+      "domain": "http://marketplace.xbox.com",
       "slug": "xbox360",
       "games_count": 1758,
       "image_background": "https://wallpapercave.com/wp/jVqlKoB.jpg",
@@ -332,7 +339,8 @@
     {
       "id": 8,
       "name": "Google Play",
-      "domain": "play.google.com",
+      "description": "Google Play (previously Android Market) is the Google online store to purchase books, games, music, and applications for the Android operating system. It was firstly launched in 2008 and then rebranded in 2012. Google Play features approximately 3 million apps and has about 1 billion users. Games are just one of 34 categories in Google Play. The store offers both free-to-play and buy-to-play games. Titles are divided into several lists depending on their genre, popularity, users&#39; ratings and the number of downloads. Additionally, Google Play shows all previously installed games, suggests personally recommended titles and special offers and novelties. Multiplayer games and console ports are specifically highlighted. Players can add games on their Google Play wishlist. The service also provides parental control to show their children only family-friendly content",
+      "domain": "http://play.google.com",
       "slug": "google-play",
       "games_count": 15948,
       "image_background": "https://revolution.co.uk/wp-content/uploads/2015/10/google-play-logo-2.jpg",
@@ -379,7 +387,8 @@
     {
       "id": 9,
       "name": "itch.io",
-      "domain": "itch.io",
+      "description": "itch.io is an online service created in 2013 primarily for selling PC indie games. Players can buy or download them for free, and developers can upload their projects for sale. While the developer sets the minimum price for a game, users can pay more if they want to. There are about 100 thousand games on itch.io. They are split into several categories depending on genres, price, and popular tags. itch.io provides soundtracks, game assets and developing tools too. Additionally, itch.io serves as a meeting point and a workspace for independent game developers. Everyone can participate and organize game jams on this site to start creating projects online. The developers share their experience in Devlogs section that contains articles, videos, and tutorials based on real cases. Players can also discuss games, communicate with the developers and share their own works in the Community hub.",
+      "domain": "http://itch.io",
       "slug": "itch",
       "games_count": 208895,
       "image_background": "https://h5ckfun.info/wp-content/uploads/2017/04/itch.png?x33778",
@@ -426,7 +435,8 @@
     {
       "id": 11,
       "name": "Epic Games",
-      "domain": "epicgames.com",
+      "description": "Founded in 1991, Epic Games is the creator of Fortnite, Unreal, Gears of War, Shadow Complex, and the Infinity Blade series of games. Epic's Unreal Engine technology brings high-fidelity, interactive experiences to PC, console, mobile, AR, VR and the Web. Unreal Engine is freely available at unrealengine.com. For the very latest on the studio, check out @EpicGames.",
+      "domain": "http://epicgames.com",
       "slug": "epic-games",
       "games_count": 185,
       "image_background": "https://www.dailyesports.gg/wp-content/uploads/2019/08/Epic-Games-reveal-update-plans-for-the-remainder-of-2018-1024x576.jpg",
