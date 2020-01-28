@@ -109,7 +109,9 @@ class GameDetailVC: UIViewController {
     }
     
     @IBAction func playVideo(_ sender: UIButton) {
-        guard let url = URL(string: gameVideoURLString) else { return }
+        guard let url = URL(string: gameVideoURLString) else {
+            return showAlert(title: "Opps!", message: "Sorry, we couldn't find a video of this game!")
+        }
         playVideo(url: url)
     }
     
