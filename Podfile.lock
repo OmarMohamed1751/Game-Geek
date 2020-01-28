@@ -1,13 +1,25 @@
 PODS:
   - Alamofire (4.9.1)
+  - BMPlayer (1.3.0):
+    - BMPlayer/Full (= 1.3.0)
+  - BMPlayer/Core (1.3.0)
+  - BMPlayer/Full (1.3.0):
+    - BMPlayer/Core
+    - NVActivityIndicatorView (~> 4.7.0)
+    - SnapKit (~> 5.0.0)
   - IQKeyboardManagerSwift (6.5.4)
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
   - MBProgressHUD (1.2.0)
+  - NVActivityIndicatorView (4.7.0):
+    - NVActivityIndicatorView/Presenter (= 4.7.0)
+  - NVActivityIndicatorView/Presenter (4.7.0)
+  - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - BMPlayer (~> 1.3.0)
   - IQKeyboardManagerSwift
   - Kingfisher (~> 5.0)
   - MBProgressHUD (~> 1.2.0)
@@ -15,16 +27,22 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - BMPlayer
     - IQKeyboardManagerSwift
     - Kingfisher
     - MBProgressHUD
+    - NVActivityIndicatorView
+    - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  BMPlayer: 92a1c2a721694ba6ab107661e7aff670909671c6
   IQKeyboardManagerSwift: 2dde0fc70110e8eac7ccce2a46fdbec6a850b414
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: ca7505b0228c4426d10d82a45ef2ef9b9cdad8d4
+PODFILE CHECKSUM: 92ff3cce8302b4fa17b3f0a01276b6f0b1c7ff04
 
 COCOAPODS: 1.8.4

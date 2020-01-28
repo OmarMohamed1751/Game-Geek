@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class GameDetailVC: UIViewController {
     
@@ -19,21 +21,24 @@ class GameDetailVC: UIViewController {
     @IBOutlet weak var gameDescriptionTextView: UITextView!
     @IBOutlet weak var screenShotsCollection: UICollectionView!
     @IBOutlet weak var videoView: UIView!
-    
     @IBOutlet weak var gameWebsiteLbl: UILabel!
     @IBOutlet weak var releaseAndRateView: UIView!
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var gameRate: UILabel!
+    @IBOutlet weak var gameRequirementsTextview: UITextView!
     
     //MARK: - Vars and Lets
     var gameImageString = ""
     var gameNameString = ""
     var releaseDateString = ""
     var gameRateString = ""
+    var gameVideoURLString = ""
+    var requirements: Requirements?
     var platformNameArr = [String]()
     var genreArr = [String]()
     var screenshotArr = [ShortScreenshot]()
     
+    let removeWordsList = ["<strong>", "</strong>", "<br>", "<ul class=><li>OS:", "<ul class=\"\">OS:", "</li>", "<li>", "</ul>", "bb_ul", "<ul class=", "<p>", ">", "<", "</p", "<p", "\"", "h2 class=bb_tag", "h2", "/h2", "//p"]
     fileprivate let platformCellIdentifier = "PlatformCell"
     fileprivate let genreCellIdentifier = "GenreCell"
     fileprivate let screenShotCellIdentifier = "ScreenShotCell"
@@ -72,11 +77,40 @@ class GameDetailVC: UIViewController {
         gameRate.text = gameRateString
         gameDescriptionTextView.layer.cornerRadius = 5
         videoView.layer.cornerRadius = 5
+        gameRequirementsTextview.layer.cornerRadius = 5
+        settingGameRequirements()
         hideIndicator()
+    }
+    
+    func playVideo(url: URL) {
+        let player = AVPlayer(url: url)
+        let vc = AVPlayerViewController()
+        vc.player = player
+        self.present(vc, animated: true) { vc.player?.play() }
+    }
+    
+    func settingGameRequirements() {
+        var minimumRequirements = requirements?.minimum
+        var recommendedRequirements = requirements?.recommended
+        
+        for word in removeWordsList {
+            let filteredMinimumRequirements = minimumRequirements?.replacingOccurrences(of: word, with: " ")
+            minimumRequirements = filteredMinimumRequirements
+            
+            let filteredRecommendedRequirements = recommendedRequirements?.replacingOccurrences(of: word, with: " ")
+            recommendedRequirements = filteredRecommendedRequirements
+        }
+        
+        gameRequirementsTextview.text = "Minimum Requirements: \n\(minimumRequirements ?? "Sorry, we couldn't find the minimum requirements of this game!") \n\n Recommended Requirements: \n\(recommendedRequirements ?? "Sorry, we couldn't find the recommended requirements of this game!")"
     }
     
     @IBAction func backBtn(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func playVideo(_ sender: UIButton) {
+        guard let url = URL(string: gameVideoURLString) else { return }
+        playVideo(url: url)
     }
     
     @IBAction func weblinkIsTapped(_ sender: UIButton) {

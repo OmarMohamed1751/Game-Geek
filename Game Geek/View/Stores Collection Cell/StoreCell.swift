@@ -26,7 +26,11 @@ class StoreCell: UICollectionViewCell {
     
     func attachStores(store: StoreResult) {
         if let storeImage = store.imageBackground {
-            self.storeImage.kf.setImage(with: URL(string: storeImage), placeholder: UIImage.init(systemName: "dollarsign.circle.fill"))
+            if #available(iOS 13.0, *) {
+                self.storeImage.kf.setImage(with: URL(string: storeImage), placeholder: UIImage.init(systemName: "dollarsign.circle.fill"))
+            } else {
+                // Fallback on earlier versions
+            }
         }
         
         if let storeName = store.name {

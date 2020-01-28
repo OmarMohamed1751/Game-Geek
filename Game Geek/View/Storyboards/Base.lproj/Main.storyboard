@@ -298,6 +298,7 @@
                         <outlet property="nextBtn" destination="ird-pV-lhh" id="7kn-8l-lFl"/>
                         <outlet property="pageCountLabel" destination="qpo-ps-Tcg" id="azK-oT-pBb"/>
                         <outlet property="pageCountView" destination="T9I-mS-ml4" id="UbV-UV-V6k"/>
+                        <outlet property="pageStackView" destination="IPu-mt-MMn" id="ezH-QV-9UX"/>
                         <outlet property="previousBtn" destination="sOw-R1-bC8" id="mMV-6b-FXi"/>
                     </connections>
                 </viewController>
@@ -488,13 +489,12 @@
                                             </collectionViewFlowLayout>
                                             <cells/>
                                         </collectionView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R2S-BD-YPa">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="We couldn't find the game description!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R2S-BD-YPa">
                                             <rect key="frame" x="10" y="650" width="384" height="150"/>
                                             <color key="backgroundColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="150" id="fd8-hq-QCV"/>
                                             </constraints>
-                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <color key="textColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -545,13 +545,24 @@
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UI1-Zm-CpE">
                                             <rect key="frame" x="10" y="1155" width="384" height="200"/>
-                                            <color key="backgroundColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="VFH-Bf-sfM"/>
                                             </constraints>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fl9-cc-W67">
+                                            <rect key="frame" x="10" y="1155" width="384" height="200"/>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
+                                            <color key="tintColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="Play" image="play.circle.fill" catalog="system">
+                                                <color key="titleColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="playVideo:" destination="s5H-xF-vu2" eventType="touchUpInside" id="sAY-jm-Peq"/>
+                                            </connections>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Website" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ecU-Zf-fSw">
-                                            <rect key="frame" x="77" y="1370" width="250" height="30"/>
+                                            <rect key="frame" x="77" y="1620" width="250" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="3B6-nz-DHs"/>
                                                 <constraint firstAttribute="width" constant="250" id="n8N-oJ-kg4"/>
@@ -561,7 +572,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="L7z-GM-zh0">
-                                            <rect key="frame" x="10" y="1405" width="384" height="30"/>
+                                            <rect key="frame" x="10" y="1655" width="384" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Q2G-WP-VAe"/>
                                             </constraints>
@@ -570,7 +581,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VT-Pd-ILT">
-                                            <rect key="frame" x="10" y="1405" width="384" height="30"/>
+                                            <rect key="frame" x="10" y="1655" width="384" height="30"/>
                                             <connections>
                                                 <action selector="weblinkIsTapped:" destination="s5H-xF-vu2" eventType="touchUpInside" id="A0C-PN-PcZ"/>
                                             </connections>
@@ -641,37 +652,66 @@
                                                 <constraint firstItem="ww3-rt-EUo" firstAttribute="top" secondItem="k5u-FR-SBz" secondAttribute="bottom" constant="5" id="xcP-ff-aDj"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PC Requirements" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="9nO-5s-clW">
+                                            <rect key="frame" x="77" y="1370" width="250" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="250" id="OiO-Ie-AjV"/>
+                                                <constraint firstAttribute="height" constant="30" id="QmN-Um-Onr"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="20"/>
+                                            <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="We couldn't find the game requirements!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bsX-8g-iyy">
+                                            <rect key="frame" x="10" y="1405" width="384" height="200"/>
+                                            <color key="backgroundColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="200" id="GXs-q5-AjC"/>
+                                            </constraints>
+                                            <color key="textColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="R2S-BD-YPa" firstAttribute="top" secondItem="I4S-Rq-6on" secondAttribute="bottom" constant="5" id="1ma-zP-Cli"/>
                                         <constraint firstItem="8vB-Un-FDf" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="2Lq-sp-0rl"/>
+                                        <constraint firstItem="fl9-cc-W67" firstAttribute="centerY" secondItem="UI1-Zm-CpE" secondAttribute="centerY" id="5GS-lR-rr9"/>
                                         <constraint firstItem="h4C-FQ-vH4" firstAttribute="top" secondItem="R2S-BD-YPa" secondAttribute="bottom" constant="15" id="5NT-tj-SUa"/>
                                         <constraint firstItem="2iK-3d-Wnc" firstAttribute="top" secondItem="iyP-Pk-deI" secondAttribute="top" constant="10" id="5PD-iy-AmA"/>
                                         <constraint firstItem="72w-Zd-o7s" firstAttribute="top" secondItem="o9a-0s-Bpc" secondAttribute="bottom" constant="5" id="7bt-M6-ZHG"/>
+                                        <constraint firstItem="9nO-5s-clW" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="9KH-yA-DkE"/>
                                         <constraint firstItem="UI1-Zm-CpE" firstAttribute="leading" secondItem="tBu-kV-ZQM" secondAttribute="leading" id="A1B-Dp-cJk"/>
                                         <constraint firstItem="DoG-9j-9yK" firstAttribute="centerX" secondItem="8vB-Un-FDf" secondAttribute="centerX" id="Cf5-Jw-Y9n"/>
                                         <constraint firstAttribute="trailing" secondItem="R2S-BD-YPa" secondAttribute="trailing" constant="10" id="Cy2-Y7-9d8"/>
                                         <constraint firstItem="hPe-8P-zPu" firstAttribute="top" secondItem="72w-Zd-o7s" secondAttribute="bottom" constant="15" id="D7T-dU-RP6"/>
                                         <constraint firstItem="hPe-8P-zPu" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="DG7-Sj-ea9"/>
                                         <constraint firstItem="GFr-ju-Tfh" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="EOC-9H-e8b"/>
+                                        <constraint firstItem="fl9-cc-W67" firstAttribute="width" secondItem="UI1-Zm-CpE" secondAttribute="width" id="GXf-k2-ut7"/>
                                         <constraint firstItem="L7z-GM-zh0" firstAttribute="trailing" secondItem="UI1-Zm-CpE" secondAttribute="trailing" id="Gkd-AS-ES4"/>
                                         <constraint firstItem="tBu-kV-ZQM" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="H0C-AU-ulk"/>
                                         <constraint firstItem="1VT-Pd-ILT" firstAttribute="width" secondItem="L7z-GM-zh0" secondAttribute="width" multiplier="0.078125" constant="354" id="Hl4-TN-7X8"/>
+                                        <constraint firstItem="ecU-Zf-fSw" firstAttribute="top" secondItem="bsX-8g-iyy" secondAttribute="bottom" constant="15" id="JSQ-7G-gy5"/>
                                         <constraint firstItem="R2S-BD-YPa" firstAttribute="leading" secondItem="iyP-Pk-deI" secondAttribute="leading" constant="10" id="KIr-ie-R7u"/>
                                         <constraint firstItem="I4S-Rq-6on" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="Kez-rw-lH1"/>
-                                        <constraint firstItem="ecU-Zf-fSw" firstAttribute="top" secondItem="UI1-Zm-CpE" secondAttribute="bottom" constant="15" id="N3J-ZR-NQu"/>
                                         <constraint firstItem="xIe-g8-atd" firstAttribute="leading" secondItem="iyP-Pk-deI" secondAttribute="leading" constant="15" id="Nfa-Gu-5Ul"/>
                                         <constraint firstItem="8vB-Un-FDf" firstAttribute="width" secondItem="iyP-Pk-deI" secondAttribute="width" id="Nzi-Nd-QUu"/>
+                                        <constraint firstItem="9nO-5s-clW" firstAttribute="top" secondItem="UI1-Zm-CpE" secondAttribute="bottom" constant="15" id="OS6-8w-62v"/>
+                                        <constraint firstItem="bsX-8g-iyy" firstAttribute="trailing" secondItem="UI1-Zm-CpE" secondAttribute="trailing" id="OSb-Y3-qVN"/>
                                         <constraint firstItem="72w-Zd-o7s" firstAttribute="leading" secondItem="iyP-Pk-deI" secondAttribute="leading" constant="15" id="Oyv-ps-B8Z"/>
+                                        <constraint firstItem="bsX-8g-iyy" firstAttribute="top" secondItem="9nO-5s-clW" secondAttribute="bottom" constant="5" id="PEZ-8y-79U"/>
                                         <constraint firstItem="xIe-g8-atd" firstAttribute="top" secondItem="hPe-8P-zPu" secondAttribute="bottom" constant="5" id="Pb0-g5-Mct"/>
                                         <constraint firstItem="I4S-Rq-6on" firstAttribute="top" secondItem="xIe-g8-atd" secondAttribute="bottom" constant="15" id="Pjf-Vm-GdC"/>
                                         <constraint firstAttribute="trailing" secondItem="72w-Zd-o7s" secondAttribute="trailing" constant="15" id="RZM-Xg-eQC"/>
+                                        <constraint firstItem="fl9-cc-W67" firstAttribute="centerX" secondItem="UI1-Zm-CpE" secondAttribute="centerX" id="SPe-LH-2ar"/>
                                         <constraint firstAttribute="trailing" secondItem="xIe-g8-atd" secondAttribute="trailing" constant="15" id="Sff-Z0-D1h"/>
                                         <constraint firstItem="o9a-0s-Bpc" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="SnU-xG-bHr"/>
                                         <constraint firstItem="GFr-ju-Tfh" firstAttribute="top" secondItem="tBu-kV-ZQM" secondAttribute="bottom" constant="15" id="T70-Kp-Xi8"/>
                                         <constraint firstItem="vai-GY-MBH" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="TsA-tl-Zyq"/>
                                         <constraint firstItem="1VT-Pd-ILT" firstAttribute="height" secondItem="L7z-GM-zh0" secondAttribute="height" id="UCq-An-6d8"/>
+                                        <constraint firstItem="bsX-8g-iyy" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="VYv-0U-3Tr"/>
+                                        <constraint firstItem="fl9-cc-W67" firstAttribute="height" secondItem="UI1-Zm-CpE" secondAttribute="height" id="aee-mS-q8G"/>
                                         <constraint firstItem="R2S-BD-YPa" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="cto-7j-FjZ"/>
                                         <constraint firstItem="L7z-GM-zh0" firstAttribute="leading" secondItem="UI1-Zm-CpE" secondAttribute="leading" id="dT4-R9-YVQ"/>
                                         <constraint firstItem="DoG-9j-9yK" firstAttribute="width" secondItem="iyP-Pk-deI" secondAttribute="width" multiplier="250:398" id="dfa-yf-LZ3"/>
@@ -689,6 +729,7 @@
                                         <constraint firstItem="o9a-0s-Bpc" firstAttribute="top" secondItem="vai-GY-MBH" secondAttribute="bottom" constant="15" id="tn5-dA-kvW"/>
                                         <constraint firstItem="tBu-kV-ZQM" firstAttribute="top" secondItem="h4C-FQ-vH4" secondAttribute="bottom" constant="5" id="uOD-0W-5Il"/>
                                         <constraint firstItem="8vB-Un-FDf" firstAttribute="top" secondItem="DoG-9j-9yK" secondAttribute="bottom" constant="-15" id="upI-Fg-8XF"/>
+                                        <constraint firstItem="bsX-8g-iyy" firstAttribute="leading" secondItem="UI1-Zm-CpE" secondAttribute="leading" id="wIL-hH-Iy6"/>
                                         <constraint firstItem="tBu-kV-ZQM" firstAttribute="trailing" secondItem="R2S-BD-YPa" secondAttribute="trailing" id="yAe-U4-q1m"/>
                                         <constraint firstItem="UI1-Zm-CpE" firstAttribute="trailing" secondItem="tBu-kV-ZQM" secondAttribute="trailing" id="zLq-Ok-tJ8"/>
                                         <constraint firstItem="vai-GY-MBH" firstAttribute="width" secondItem="iyP-Pk-deI" secondAttribute="width" multiplier="300:404" id="zuJ-I6-DjA"/>
@@ -714,6 +755,7 @@
                         <outlet property="gameNameView" destination="DoG-9j-9yK" id="634-Lu-2ox"/>
                         <outlet property="gamePlatformsCollection" destination="72w-Zd-o7s" id="iLm-9x-EX6"/>
                         <outlet property="gameRate" destination="kb5-jz-scF" id="jTW-bs-uIi"/>
+                        <outlet property="gameRequirementsTextview" destination="bsX-8g-iyy" id="EPd-jM-MCK"/>
                         <outlet property="gameWebsiteLbl" destination="L7z-GM-zh0" id="DjS-ap-pHb"/>
                         <outlet property="releaseAndRateView" destination="vai-GY-MBH" id="mDi-JS-mTc"/>
                         <outlet property="releaseDate" destination="ww3-rt-EUo" id="EBu-hg-Hky"/>
@@ -807,5 +849,6 @@
         <image name="dollarsign.circle.fill" catalog="system" width="64" height="60"/>
         <image name="gamecontroller.fill" catalog="system" width="64" height="40"/>
         <image name="magnifyingglass.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="play.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>

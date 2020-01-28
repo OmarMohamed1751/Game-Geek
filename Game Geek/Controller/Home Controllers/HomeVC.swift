@@ -14,6 +14,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var infoLbl: UILabel!
     @IBOutlet weak var genreCollection: UICollectionView!
     @IBOutlet weak var gameListTable: UITableView!
+    @IBOutlet weak var pageStackView: UIStackView!
     @IBOutlet weak var previousBtn: UIButton!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var pageCountView: UIView!
@@ -82,6 +83,7 @@ class HomeVC: UIViewController {
             if let error = error {
                 print(error)
                 self.hideIndicator()
+                self.pageStackView.isHidden = true
                 self.showAlert(title: "Opps!", message: error.localizedDescription)
             } else {
                 if let game = game {
@@ -101,6 +103,8 @@ class HomeVC: UIViewController {
             } else {
                 self.infoLbl.isHidden = true
             }
+            
+            self.gameListTable.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
             
             self.hideIndicator()
         }
@@ -125,6 +129,11 @@ class HomeVC: UIViewController {
                         self.gameListTable.reloadData()
                     }
                 }
+                
+                self.gameListTable.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
+                self.genreCollection.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionView.ScrollPosition.left, animated: true)
+                
+                self.hideIndicator()
             }
             
             for item in 0 ..< self.genresArr.count {
@@ -143,7 +152,7 @@ class HomeVC: UIViewController {
                 self.infoLbl.isHidden = true
             }
             
-            self.hideIndicator()
+            
         }
     }
     
@@ -166,6 +175,11 @@ class HomeVC: UIViewController {
                         self.previousBtn.isHidden = false
                     }
                 }
+                
+                self.gameListTable.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
+                self.genreCollection.scrollToItem(at: IndexPath(item: 0, section: 0), at: UICollectionView.ScrollPosition.left, animated: true)
+                
+                self.hideIndicator()
             }
             
             for item in 0 ..< self.genresArr.count {
@@ -179,8 +193,6 @@ class HomeVC: UIViewController {
             } else {
                 self.infoLbl.isHidden = true
             }
-            
-            self.hideIndicator()
         }
     }
     
@@ -237,6 +249,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                             
                             if self.allGamesArr.isEmpty {
                                 self.infoLbl.isHidden = false
+                            } else {
+                                self.gameListTable.scrollToRow(at: IndexPath(row: 0, section: 0), at: UITableView.ScrollPosition.top, animated: true)
                             }
                         }
                     }
@@ -290,6 +304,9 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             for platform in gamePlatform {
                 if let platformName = platform.platform?.name {
                     gameDetailVC.platformNameArr.append(platformName)
+                    if platformName == "PC" {
+                        gameDetailVC.requirements = platform.requirementsEn
+                    }
                 }
             }
         }
@@ -321,7 +338,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         if let gameVideoURL = allGamesArr[indexPath.row].clip?.clips?.full {
-           
+            gameDetailVC.gameVideoURLString = gameVideoURL
         }
         
         navigationController?.pushViewController(gameDetailVC, animated: true)

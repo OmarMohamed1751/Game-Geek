@@ -10,4 +10,5 @@ pod 'IQKeyboardManagerSwift'
 pod 'Alamofire'
 pod 'Kingfisher', '~> 5.0'
 pod 'MBProgressHUD', '~> 1.2.0'
+pod 'BMPlayer', '~> 1.3.0'
 end

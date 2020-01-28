@@ -68,11 +68,6 @@ struct Developer: Codable {
     }
 }
 
-// MARK: - Requirements
-struct Requirements: Codable {
-    let minimum, recommended: String?
-}
-
 // MARK: - Store
 struct Store: Codable {
     let id: Int?

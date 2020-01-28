@@ -36,6 +36,12 @@ struct GameResult: Codable {
 // MARK: - Platform Element
 struct PlatformElement: Codable {
     let platform: Platform?
+    let requirementsEn: Requirements?
+    enum CodingKeys: String, CodingKey{
+        case platform
+        case requirementsEn = "requirements_en"
+    }
+    
 }
 
 // MARK: - Platform
@@ -79,8 +85,13 @@ struct GameClips: Codable {
 // MARK: - StoreElement
 struct StoreElement: Codable {
     let storeId: Int?
-
     enum CodingKeys: String, CodingKey {
         case storeId = "id"
     }
+}
+
+// MARK: - Requirements
+struct Requirements: Codable {
+    let minimum: String?
+    let recommended: String?
 }
