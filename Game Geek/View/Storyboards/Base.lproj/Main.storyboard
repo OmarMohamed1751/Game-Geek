@@ -576,7 +576,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Q2G-WP-VAe"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="20"/>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -672,10 +672,42 @@
                                             <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zFP-2W-TzE">
+                                            <rect key="frame" x="10" y="1735" width="384" height="265"/>
+                                            <color key="backgroundColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="NA2-9V-5dO">
+                                                <size key="itemSize" width="200" height="115"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells/>
+                                        </collectionView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You Can Get It From.." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="SYj-MM-udw">
+                                            <rect key="frame" x="52" y="1700" width="300" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="FrC-AL-unR"/>
+                                                <constraint firstAttribute="width" constant="300" id="aJN-ls-xE8"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="20"/>
+                                            <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, no stores were found!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="1vS-NU-oEA">
+                                            <rect key="frame" x="2" y="1750" width="400" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="400" id="BhQ-5p-m1s"/>
+                                                <constraint firstAttribute="height" constant="80" id="aGa-ce-m0l"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AmericanTypewriter-Semibold" family="American Typewriter" pointSize="25"/>
+                                            <color key="textColor" red="0.0" green="0.67843137249999996" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" red="0.1333333333" green="0.15686274510000001" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="R2S-BD-YPa" firstAttribute="top" secondItem="I4S-Rq-6on" secondAttribute="bottom" constant="5" id="1ma-zP-Cli"/>
+                                        <constraint firstItem="1vS-NU-oEA" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="21p-vn-NkM"/>
                                         <constraint firstItem="8vB-Un-FDf" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="2Lq-sp-0rl"/>
                                         <constraint firstItem="fl9-cc-W67" firstAttribute="centerY" secondItem="UI1-Zm-CpE" secondAttribute="centerY" id="5GS-lR-rr9"/>
                                         <constraint firstItem="h4C-FQ-vH4" firstAttribute="top" secondItem="R2S-BD-YPa" secondAttribute="bottom" constant="15" id="5NT-tj-SUa"/>
@@ -696,6 +728,7 @@
                                         <constraint firstItem="R2S-BD-YPa" firstAttribute="leading" secondItem="iyP-Pk-deI" secondAttribute="leading" constant="10" id="KIr-ie-R7u"/>
                                         <constraint firstItem="I4S-Rq-6on" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="Kez-rw-lH1"/>
                                         <constraint firstItem="xIe-g8-atd" firstAttribute="leading" secondItem="iyP-Pk-deI" secondAttribute="leading" constant="15" id="Nfa-Gu-5Ul"/>
+                                        <constraint firstItem="zFP-2W-TzE" firstAttribute="leading" secondItem="tBu-kV-ZQM" secondAttribute="leading" id="Nmq-2s-QOe"/>
                                         <constraint firstItem="8vB-Un-FDf" firstAttribute="width" secondItem="iyP-Pk-deI" secondAttribute="width" id="Nzi-Nd-QUu"/>
                                         <constraint firstItem="9nO-5s-clW" firstAttribute="top" secondItem="UI1-Zm-CpE" secondAttribute="bottom" constant="15" id="OS6-8w-62v"/>
                                         <constraint firstItem="bsX-8g-iyy" firstAttribute="trailing" secondItem="UI1-Zm-CpE" secondAttribute="trailing" id="OSb-Y3-qVN"/>
@@ -721,15 +754,21 @@
                                         <constraint firstItem="72w-Zd-o7s" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="iJJ-2C-TWA"/>
                                         <constraint firstItem="tBu-kV-ZQM" firstAttribute="leading" secondItem="R2S-BD-YPa" secondAttribute="leading" id="jw8-k7-xza"/>
                                         <constraint firstItem="h4C-FQ-vH4" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="kR5-Ya-7W1"/>
+                                        <constraint firstItem="zFP-2W-TzE" firstAttribute="top" secondItem="SYj-MM-udw" secondAttribute="bottom" constant="5" id="ktY-fL-f5j"/>
+                                        <constraint firstAttribute="bottom" secondItem="zFP-2W-TzE" secondAttribute="bottom" id="ld2-6r-UR9"/>
                                         <constraint firstItem="ecU-Zf-fSw" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="lep-aa-ivL"/>
                                         <constraint firstItem="8vB-Un-FDf" firstAttribute="top" secondItem="2iK-3d-Wnc" secondAttribute="bottom" constant="55" id="n3C-Gx-wXk"/>
                                         <constraint firstItem="1VT-Pd-ILT" firstAttribute="centerX" secondItem="L7z-GM-zh0" secondAttribute="centerX" id="oOr-Uh-Y2p"/>
                                         <constraint firstItem="L7z-GM-zh0" firstAttribute="top" secondItem="ecU-Zf-fSw" secondAttribute="bottom" constant="5" id="oa4-I7-RyW"/>
                                         <constraint firstItem="2iK-3d-Wnc" firstAttribute="leading" secondItem="iyP-Pk-deI" secondAttribute="leading" constant="10" id="rtd-jP-aGD"/>
+                                        <constraint firstItem="SYj-MM-udw" firstAttribute="centerX" secondItem="iyP-Pk-deI" secondAttribute="centerX" id="s3X-p3-zIh"/>
                                         <constraint firstItem="o9a-0s-Bpc" firstAttribute="top" secondItem="vai-GY-MBH" secondAttribute="bottom" constant="15" id="tn5-dA-kvW"/>
+                                        <constraint firstItem="zFP-2W-TzE" firstAttribute="trailing" secondItem="tBu-kV-ZQM" secondAttribute="trailing" id="uKl-Hf-pCX"/>
                                         <constraint firstItem="tBu-kV-ZQM" firstAttribute="top" secondItem="h4C-FQ-vH4" secondAttribute="bottom" constant="5" id="uOD-0W-5Il"/>
+                                        <constraint firstItem="1vS-NU-oEA" firstAttribute="top" secondItem="SYj-MM-udw" secondAttribute="bottom" constant="20" id="uW2-lP-0vH"/>
                                         <constraint firstItem="8vB-Un-FDf" firstAttribute="top" secondItem="DoG-9j-9yK" secondAttribute="bottom" constant="-15" id="upI-Fg-8XF"/>
                                         <constraint firstItem="bsX-8g-iyy" firstAttribute="leading" secondItem="UI1-Zm-CpE" secondAttribute="leading" id="wIL-hH-Iy6"/>
+                                        <constraint firstItem="SYj-MM-udw" firstAttribute="top" secondItem="L7z-GM-zh0" secondAttribute="bottom" constant="15" id="xLj-2u-BY0"/>
                                         <constraint firstItem="tBu-kV-ZQM" firstAttribute="trailing" secondItem="R2S-BD-YPa" secondAttribute="trailing" id="yAe-U4-q1m"/>
                                         <constraint firstItem="UI1-Zm-CpE" firstAttribute="trailing" secondItem="tBu-kV-ZQM" secondAttribute="trailing" id="zLq-Ok-tJ8"/>
                                         <constraint firstItem="vai-GY-MBH" firstAttribute="width" secondItem="iyP-Pk-deI" secondAttribute="width" multiplier="300:404" id="zuJ-I6-DjA"/>
@@ -757,9 +796,11 @@
                         <outlet property="gameRate" destination="kb5-jz-scF" id="jTW-bs-uIi"/>
                         <outlet property="gameRequirementsTextview" destination="bsX-8g-iyy" id="EPd-jM-MCK"/>
                         <outlet property="gameWebsiteLbl" destination="L7z-GM-zh0" id="DjS-ap-pHb"/>
+                        <outlet property="noStoresLbl" destination="1vS-NU-oEA" id="FFK-9d-oCf"/>
                         <outlet property="releaseAndRateView" destination="vai-GY-MBH" id="mDi-JS-mTc"/>
                         <outlet property="releaseDate" destination="ww3-rt-EUo" id="EBu-hg-Hky"/>
                         <outlet property="screenShotsCollection" destination="tBu-kV-ZQM" id="T15-kX-o9Z"/>
+                        <outlet property="storesCollection" destination="zFP-2W-TzE" id="pGZ-0w-gha"/>
                         <outlet property="videoView" destination="UI1-Zm-CpE" id="GgJ-9c-0dw"/>
                     </connections>
                 </viewController>

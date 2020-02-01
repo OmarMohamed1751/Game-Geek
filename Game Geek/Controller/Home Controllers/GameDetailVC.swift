@@ -26,6 +26,8 @@ class GameDetailVC: UIViewController {
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var gameRate: UILabel!
     @IBOutlet weak var gameRequirementsTextview: UITextView!
+    @IBOutlet weak var storesCollection: UICollectionView!
+    @IBOutlet weak var noStoresLbl: UILabel!
     
     //MARK: - Vars and Lets
     var gameImageString = ""
@@ -37,11 +39,15 @@ class GameDetailVC: UIViewController {
     var platformNameArr = [String]()
     var genreArr = [String]()
     var screenshotArr = [ShortScreenshot]()
+    var storesArr = [StoreResult]()
+    var buyingStores = [String]()
     
     let removeWordsList = ["<strong>", "</strong>", "<br>", "<ul class=><li>OS:", "<ul class=\"\">OS:", "</li>", "<li>", "</ul>", "bb_ul", "<ul class=", "<p>", ">", "<", "</p", "<p", "\"", "h2 class=bb_tag", "h2", "/h2", "//p"]
+    
     fileprivate let platformCellIdentifier = "PlatformCell"
     fileprivate let genreCellIdentifier = "GenreCell"
     fileprivate let screenShotCellIdentifier = "ScreenShotCell"
+    fileprivate let storesCollectionCellIdentifier = "StoreCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +63,10 @@ class GameDetailVC: UIViewController {
         screenShotsCollection.register(UINib(nibName: screenShotCellIdentifier, bundle: nil), forCellWithReuseIdentifier: screenShotCellIdentifier)
         screenShotsCollection.delegate = self
         screenShotsCollection.dataSource = self
+        
+        storesCollection.register(UINib(nibName: storesCollectionCellIdentifier, bundle: nil), forCellWithReuseIdentifier: storesCollectionCellIdentifier)
+        storesCollection.delegate = self
+        storesCollection.dataSource = self
         
         basicUISetup()
     }
@@ -128,10 +138,12 @@ extension GameDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
         
         if collectionView == gamePlatformsCollection {
             return platformNameArr.count
-        } else if collectionView == gameGenreCollection{
+        } else if collectionView == gameGenreCollection {
             return genreArr.count
-        } else {
+        } else if collectionView == screenShotsCollection {
             return screenshotArr.count
+        } else {
+            return storesArr.count
         }
         
     }
@@ -146,11 +158,15 @@ extension GameDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: genreCellIdentifier, for: indexPath) as? GenreCell else {return UICollectionViewCell()}
             cell.genre.text = genreArr[indexPath.row]
             return cell
-        } else {
+        } else if collectionView == screenShotsCollection {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: screenShotCellIdentifier, for: indexPath) as? ScreenShotCell else {return UICollectionViewCell()}
             cell.attachScreenshots(screenshot: screenshotArr[indexPath.row])
             cell.pageControl.numberOfPages = screenshotArr.count
             cell.pageControl.currentPage = indexPath.row
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: storesCollectionCellIdentifier, for: indexPath) as? StoreCell else {return UICollectionViewCell()}
+            cell.attachStores(store: storesArr[indexPath.row])
             return cell
         }
         
@@ -161,8 +177,25 @@ extension GameDetailVC: UICollectionViewDelegate, UICollectionViewDataSource, UI
             return CGSize(width: gamePlatformsCollection.bounds.width, height: gamePlatformsCollection.bounds.height)
         } else if collectionView == gameGenreCollection {
             return CGSize(width: gameGenreCollection.bounds.width, height: gameGenreCollection.bounds.height)
-        } else {
+        } else if collectionView == screenShotsCollection {
             return CGSize(width: screenShotsCollection.bounds.width, height: screenShotsCollection.bounds.height)
+        } else {
+            return CGSize.init(width: collectionView.bounds.width/2 - 10 , height: 170)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == gamePlatformsCollection {
+            return
+        } else if collectionView == gameGenreCollection {
+            return
+        } else if collectionView == screenShotsCollection {
+            return
+        } else {
+            guard let url = URL(string: buyingStores[indexPath.row]) else {
+                return showAlert(title: "Opps!", message: "Sorry, We couldn't find the buying link for this website!")
+            }
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     

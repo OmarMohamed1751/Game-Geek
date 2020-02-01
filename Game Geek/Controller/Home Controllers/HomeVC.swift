@@ -27,6 +27,7 @@ class HomeVC: UIViewController {
     var allGamesArr = [GameResult]()
     var currentPage = 1
     var previousPage = 0
+    var allStoresArr = [StoreResult]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -339,6 +340,38 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         
         if let gameVideoURL = allGamesArr[indexPath.row].clip?.clips?.full {
             gameDetailVC.gameVideoURLString = gameVideoURL
+        }
+        
+        if let gameStoresElements = allGamesArr[indexPath.row].stores  {
+            for gameStoreElement in gameStoresElements {
+                if let gameStoreId = gameStoreElement.gameStore?.id {
+                    API.getAllStores(controller: self) { (error, gameStore) in
+                        if let error = error {
+                            print(error)
+                            self.showAlert(title: "Opps!", message: error.localizedDescription)
+                        } else {
+                            if let stores = gameStore?.results {
+                                for store in stores {
+                                    if gameStoreId == store.storeId {
+                                        if let url = gameStoreElement.buyLink {
+                                            gameDetailVC.buyingStores.append(url)
+                                        }
+                                        
+                                        if gameDetailVC.buyingStores.isEmpty {
+                                            gameDetailVC.noStoresLbl.isHidden = false
+                                        } else {
+                                            gameDetailVC.noStoresLbl.isHidden = true
+                                        }
+                                        
+                                        gameDetailVC.storesArr.append(store)
+                                        gameDetailVC.storesCollection.reloadData()
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         
         navigationController?.pushViewController(gameDetailVC, animated: true)

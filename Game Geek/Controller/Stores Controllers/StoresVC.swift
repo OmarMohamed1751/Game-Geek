@@ -46,7 +46,6 @@ class StoresVC: UIViewController {
         }
     }
     
-    
 }
 
 extension StoresVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

@@ -82,16 +82,24 @@ struct GameClips: Codable {
     }
 }
 
-// MARK: - StoreElement
-struct StoreElement: Codable {
-    let storeId: Int?
-    enum CodingKeys: String, CodingKey {
-        case storeId = "id"
-    }
-}
-
 // MARK: - Requirements
 struct Requirements: Codable {
     let minimum: String?
     let recommended: String?
+}
+
+// MARK: - StoreElement
+struct StoreElement: Codable {
+    let buyLink: String?
+    let gameStore: GameBuyingStore?
+    
+    enum CodingKeys: String, CodingKey {
+        case buyLink = "url_en"
+        case gameStore = "store"
+    }
+}
+
+// MARK: - Store
+struct GameBuyingStore: Codable {
+    let id: Int?
 }

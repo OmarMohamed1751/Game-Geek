@@ -51,49 +51,6 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard let gameDetailVC = storyboard?.instantiateViewController(withIdentifier: "GameDetailVC") as? GameDetailVC else { return }
-
-        guard let gameImage = gamesFilteredArr[indexPath.row].backgroundImage else { return }
-        guard let gameName = gamesFilteredArr[indexPath.row].name else { return }
-        
-        gameDetailVC.gameImageString = gameImage
-        gameDetailVC.gameNameString = gameName
-        
-        if let gameName = allGamesArr[indexPath.row].name {
-            gameDetailVC.gameName.text = gameName
-        }
-        
-        if let gamePlatform = gamesFilteredArr[indexPath.row].platforms {
-            for platform in gamePlatform {
-                if let platformName = platform.platform?.name {
-                    gameDetailVC.platformNameArr.append(platformName)
-                }
-            }
-        }
-        
-        if let gameGenres = gamesFilteredArr[indexPath.row].genres {
-            for genre in gameGenres {
-                if let genreName = genre.name{
-                    gameDetailVC.genreArr.append(genreName)
-                }
-            }
-        }
-        
-        if let gameSlug = gamesFilteredArr[indexPath.row].slug {
-            API.getGameDetails(controller: self, gameName: gameSlug) { (error, details) in
-                if let error = error {
-                    print(error)
-                    self.showAlert(title: "Opps!", message: error.localizedDescription)
-                } else {
-                    if let details = details {
-                        gameDetailVC.gameDescriptionTextView.text = details.gameDescription
-                    }
-                }
-            }
-        }
-        
-        if let shortScreenshots = gamesFilteredArr[indexPath.row].shortScreenshots {
-            gameDetailVC.screenshotArr = shortScreenshots
-        }
         
         navigationController?.pushViewController(gameDetailVC, animated: true)
         

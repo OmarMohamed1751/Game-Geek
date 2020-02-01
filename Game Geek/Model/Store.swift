@@ -18,9 +18,10 @@ struct StoreResult: Codable {
     let storeId: Int?
     let name, domain, slug, description: String?
     let imageBackground: String?
+    var buyGameLink: String?
 
     enum CodingKeys: String, CodingKey {
-        case name, description, domain, slug
+        case name, description, domain, slug, buyGameLink
         case storeId = "id"
         case imageBackground = "image_background"
     }
